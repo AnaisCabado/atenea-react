@@ -1,0 +1,49 @@
+.publication {
+    display: flex;
+    flex-flow: column;
+
+    border: 1px solid #FF951A;
+    border-radius: 20px;
+    padding: 1em;
+    gap: 1em;
+
+    width: 100%;
+}
+
+.publication-user-data {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    gap: 1em
+}
+
+.user-data {
+    display: flex;
+    flex-flow: row;
+    gap: 1em;
+}
+
+.user-data__img {
+    border-radius: 100%;
+}
+
+.publication-data {
+    display: flex;
+    flex-flow: column;
+}
+
+.publication-img img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+
+.publication_buttons {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 1em;
+}

@@ -1,14 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
 import PublicationCard from './components/publicationCard/PublicationCard';
-import publications from './utils/data';
+import PublicationList from './components/publicationList/PublicationList';
+
 import './App.css'
+import fetchData from './utils/api/fetch';
 
 function App() {
+  const [publications,setPublications] = useState([]);
+
+  useEffect(()=>{
+    // handleFetchData();
+  },[])
+  const handleFetchData = async()=>{
+    const data = await fetchData('/publications');
+    console.log(data);
+    setPublications(data);
+  }
   console.log(publications);
 
   return (
     <>
-    <PublicationCard publication={publications[0]} />
+    <PublicationList publications={publications} />
     </>
   )
 }

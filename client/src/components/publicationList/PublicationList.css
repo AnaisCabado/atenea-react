@@ -1,0 +1,7 @@
+.publication-list {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1em;
+}
