@@ -1,6 +1,6 @@
 import Nav from '../../components/nav/Nav';
 import SearchFilter from '../../components/searchFilter/SearchFilter';
-import PublicationList from '../../components/publicationList/PublicationList';
+import PublicationList from '../publicationList/PublicationList';
 import { useEffect, useState } from 'react';
 import fetchData from '../../utils/api/fetch';
 import './Root.css';

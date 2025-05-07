@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 
 import './SearchFilter.css';
 
-function SearchFilter() {
+function SearchFilter({onSearch}) {
     const [searchTerm, setSearchTerm] = useState("");
     const timeoutRef = useRef(null);
     const handleSearch = (e) => {
@@ -14,6 +14,7 @@ function SearchFilter() {
             console.log('search',data);
             setSearchTerm(data);
         },500);
+        setSearchTerm(data);
     };
     return (
         <section className="search-bar">

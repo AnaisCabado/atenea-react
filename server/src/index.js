@@ -18,15 +18,14 @@ const corsOptions = {
     credentials: true,
 }
 
+app.use(cors(corsOptions));
+app.use(cookieParser());
 app.use(express.static('public')); // para poder subir archivos publicos (estilos, js de front, etc.)
 app.use(session({
     secret: SESSION_SECRET,
     resave: true,
     saveUninitialized: true
 }));
-
-app.use(cors(corsOptions));
-app.use(cookieParser());
 
 app.use(express.json()); // para API (formato json)
 app.use(express.urlencoded({extended:true})); // para Vistas (formato formulario)

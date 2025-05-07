@@ -1,29 +1,22 @@
 import {createBrowserRouter} from 'react-router-dom';
 import Root from './pages/root/Root';
-import ProductList from './pages/productList/ProductList'; /* TODO CAMBIAR */
-import StandList from './pages/standList/StandList'; /* TODO CAMBIAR */
-import Auth from './pages/auth/Auth'; /* TODO CAMBIAR */
+import PublicationList from './pages/publicationList/PublicationList';
+import Auth from './pages/auth/Auth';
 
-import { getAllProducts } from './utils/api/product'; /* TODO CAMBIAR */
-import { getAllStands } from './utils/api/stand'; /* TODO CAMBIAR */
+import { getAllPublications } from './utils/api/publication';
 
 const router  = createBrowserRouter([
     {
-        path : "/",
+        path : "http:/localhost:3000/api",
         element: <Root />,
         children: [
             {
-                path: "/product", /* TODO CAMBIAR */
-                element: <ProductList />,
-                loader: getAllProducts
+                path: "/publications",
+                element: <PublicationList />,
+                loader: getAllPublications
             },
             {
-                path: "/stand", /* TODO CAMBIAR */
-                element: <StandList />,
-                loader: getAllStands
-            },
-            {
-                path: "/login", /* TODO CAMBIAR */
+                path: "/login",
                 element: <Auth />,
             }
         ]

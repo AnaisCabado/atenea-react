@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import PublicationCard from '../publicationCard/PublicationCard';
+import PublicationCard from '../../components/publicationCard/PublicationCard';
 import { getAllPublications } from '../../utils/api/publication';
 
 import './PublicationList.css';

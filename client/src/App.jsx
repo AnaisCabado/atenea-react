@@ -1,21 +1,35 @@
-import { useEffect, useState } from 'react'
-
-import PublicationList from './components/publicationList/PublicationList';
-
+import { useEffect, useState } from 'react';
+import Navbar from './components/navbar/Nav';
+import PublicationList from './pages/publicationList/PublicationList';
+import Auth from './components/auth/Auth';
+import RouteContext from './context/RouteContext';
+import { AuthProvider } from './context/AuthContext';
 import './App.css'
+// import Greeting from './components/greeting/Greeting';
 
-const routes = {
-  home: <h1>home</h1>,
-  publications: <PublicationList />,
-}
+
 
 function App() {
-  const [route,setRoute] = useState('home');
+  const [route, setRoute] = useState("home");
 
+
+  const handleRouteChange = (newRoute) => {
+    setRoute(newRoute);
+  }
+  const routes = {
+    home: <h1>Home</h1>,
+    product: <PublicationList />,
+    login: <Auth />
+  }
   return (
     <>
-    <PublicationList />
-    {routes[route]}
+      <RouteContext value={{ route: route, onRouteChange: handleRouteChange }} >
+        <AuthProvider>
+          <Navbar />
+          {/* <Greeting /> */}
+          {routes[route]}
+        </AuthProvider>
+      </RouteContext>
     </>
   )
 }

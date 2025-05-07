@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: column;
 
-    border: 1px solid #FF951A;
+    border: 1px solid #008d76;
     border-radius: 20px;
     padding: 1em;
     gap: 1em;
@@ -39,7 +39,7 @@
     font-size: .8rem;
 }
 .publication-category {
-    background-color: #FF951A;
+    background-color: #008d76;
     color: black;
     border-radius: 10px;
     width: fit-content;

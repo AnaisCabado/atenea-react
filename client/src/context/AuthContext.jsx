@@ -1,0 +1,51 @@
+import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getUserInfo, login, logout } from "../utils/api/auth";
+
+const AuthContext = createContext({
+    userData: {},
+    onLogin: async () => { },
+    onLogout: async () => { },
+});
+
+const AuthProvider = ({children}) => {
+    const [userData, setUserData] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        handleGetUserInfo();
+    }, [])
+    const handleGetUserInfo = async()=>{
+        const result = await getUserInfo();
+        console.log('user info', result);
+        if(result.user){
+            setUserData(result.user);
+        }
+    };
+    const handleLogin = async (email, password) => {
+        const result = await llogin (email, password);
+        if (result.error) {
+            return result.error;
+        } else {
+            console.log('login', result);
+            setUserData(result.user);
+            navigate('/');
+            return null;
+        }
+    };
+    const handleLogout = () => {
+        logout();
+        setUserData(null);
+        navigate('/');
+    }
+    return (
+        <AuthContext.Provider value={{ userData, onLogin: handleLogin, onLogout: handleLogout }}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+
+export {
+    AuthContext,
+    AuthProvider
+}
