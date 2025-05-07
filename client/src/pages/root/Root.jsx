@@ -21,7 +21,6 @@ function Root() {
             <Nav />
 
             <main>
-                <SearchFilter />
                 <Outlet />
             </main>
 
