@@ -5,7 +5,7 @@ import { getUserInfo, login, logout } from "../utils/api/auth";
 const AuthContext = createContext({
     userData: {},
     onLogin: async () => { },
-    onLogout: async () => { },
+    onLogout: () => { },
 });
 
 const AuthProvider = ({children}) => {
@@ -23,7 +23,7 @@ const AuthProvider = ({children}) => {
         }
     };
     const handleLogin = async (email, password) => {
-        const result = await llogin (email, password);
+        const result = await login (email, password);
         if (result.error) {
             return result.error;
         } else {
@@ -34,16 +34,17 @@ const AuthProvider = ({children}) => {
         }
     };
     const handleLogout = () => {
-        logout();
+        // logout();
         setUserData(null);
         navigate('/');
     }
     return (
-        <AuthContext.Provider value={{ userData, onLogin: handleLogin, onLogout: handleLogout }}>
+        <AuthContext value={{ userData:userData, onLogin: handleLogin, onLogout: handleLogout }}>
             {children}
-        </AuthContext.Provider>
+        </AuthContext>
     )
 }
+
 
 export {
     AuthContext,

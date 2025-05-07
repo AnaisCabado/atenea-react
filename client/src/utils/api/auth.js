@@ -5,7 +5,7 @@ async function login(email, password) {
         email,
         password
     }
-    const result = await fetchData('/login', 'POST', data);
+    const result = await fetchData('/users/login', 'POST', data);
     return result;
 }
 async function logout(){

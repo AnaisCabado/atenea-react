@@ -4,6 +4,7 @@ import PublicationList from '../publicationList/PublicationList';
 import { useEffect, useState } from 'react';
 import fetchData from '../../utils/api/fetch';
 import './Root.css';
+import { Outlet } from 'react-router-dom';
 
 function Root() {
     const [publications,setPublications] = useState([]);
@@ -17,16 +18,11 @@ function Root() {
   }
     return (
         <div>
-            <Nav myItem={[
-                { text: 'Home', newRoute: '/' },
-                { text: 'Profile', newRoute: '/login' },
-                { text: 'Post', newRoute: '/publications/create' },
-                // { text: 'Feed', newRoute: '/feed' },
-            ]}/>
+            <Nav />
 
             <main>
                 <SearchFilter />
-                <PublicationList publications={publications} />
+                <Outlet />
             </main>
 
             <footer>© 2025 Mi App</footer>

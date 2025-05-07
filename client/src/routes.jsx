@@ -7,7 +7,7 @@ import { getAllPublications } from './utils/api/publication';
 
 const router  = createBrowserRouter([
     {
-        path : "http:/localhost:3000/api",
+        path : "/",
         element: <Root />,
         children: [
             {
