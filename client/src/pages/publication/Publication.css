@@ -1,0 +1,96 @@
+.publication-page {
+    top: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
+}
+
+
+
+
+.publication__header {
+    width: 100%;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+
+    background-color: #008d76;
+    border: none;
+    border-radius: 40px;
+}
+
+.publication__header__img {
+    width: 100%;
+}
+
+
+
+
+
+.publication__data {
+    width: 100%;
+
+    display: flex;
+    flex-flow: column;
+
+    margin-top: 1em;
+    padding: 0 2em;
+}
+
+.data--info {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.data-user-info {
+    display: flex;
+    flex-flow: row;
+    gap: .5em;
+}
+.user-img {
+    width: 3em;
+
+    border: 1px solid #008d76;
+    border-radius: 100px;
+
+    object-fit: cover;
+}
+.data--name-lastname {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+.data--username {
+    font-size: .8rem;
+    margin: 0;
+}
+.data--publication-date {
+    font-size: .8rem;
+}
+
+.data--title {
+    font-size: 1.2rem;
+}
+
+.data--text {
+    font-size: 1rem;
+}
+
+.data--location {
+    font-size: .8rem;
+}
+.join-button {
+    width: 100%;
+
+    background-color: #008d76;
+}

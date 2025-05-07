@@ -16,6 +16,7 @@ function Home() {
 
     return (
         <div>
+            <h1>STORIES</h1>
             <PublicationList publications={publications}/>
         </div>
     )

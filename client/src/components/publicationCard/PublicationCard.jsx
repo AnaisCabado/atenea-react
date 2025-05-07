@@ -25,7 +25,9 @@ function PublicationCard({publication}) {
                 <img src="https://placehold.co/300x150" className="logo" alt={"AUX"} />
             </section>
             <section className="publication-data">
-                <h2>{publication.title}</h2>
+                <NavLink to={`/publications/${publication.publication_id}`}>
+                    <h2>{publication.title}</h2>
+                </NavLink>
                 <p className="publication-text">{publication.text}</p>
                 <p className="publication-category">{publication.category}</p>
             </section>

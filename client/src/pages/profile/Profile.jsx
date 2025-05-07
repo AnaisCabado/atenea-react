@@ -39,6 +39,7 @@ function Profile() {
 
             <section className="user-profile__publications">
                 <h2>Publications</h2>
+                <div className="user-profile__publications--container">                </div>
             </section>
         </article>
     );
