@@ -1,27 +1,21 @@
 import { useEffect, useState } from 'react'
 
-import PublicationCard from './components/publicationCard/PublicationCard';
 import PublicationList from './components/publicationList/PublicationList';
 
 import './App.css'
-import fetchData from './utils/api/fetch';
+
+const routes = {
+  home: <h1>home</h1>,
+  publications: <PublicationList />,
+}
 
 function App() {
-  const [publications,setPublications] = useState([]);
-
-  useEffect(()=>{
-    // handleFetchData();
-  },[])
-  const handleFetchData = async()=>{
-    const data = await fetchData('/publications');
-    console.log(data);
-    setPublications(data);
-  }
-  console.log(publications);
+  const [route,setRoute] = useState('home');
 
   return (
     <>
-    <PublicationList publications={publications} />
+    <PublicationList />
+    {routes[route]}
     </>
   )
 }

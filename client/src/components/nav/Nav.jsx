@@ -8,7 +8,7 @@ function NavBar({ myItem }) {
     const { route, onRouteChange } = useContext(RouteContext);
     return (
         <nav className="my-nav">
-            <ul>
+            <ul className="nav-list">
                 {myItem.map(item => (
                     <li key={item.text}>
                         <NavLink

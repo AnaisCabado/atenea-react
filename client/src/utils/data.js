@@ -79,6 +79,8 @@ const publications = [
         "category": "post",
         "user_id": 10
     }
-]
+] 
+
+/* TODO AÑADIR USERS */
 
 export default publications;

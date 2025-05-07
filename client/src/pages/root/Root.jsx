@@ -3,7 +3,7 @@ import SearchFilter from '../../components/searchFilter/SearchFilter';
 import PublicationList from '../../components/publicationList/PublicationList';
 import { useEffect, useState } from 'react';
 import fetchData from '../../utils/api/fetch';
-// import './Root.css';
+import './Root.css';
 
 function Root() {
     const [publications,setPublications] = useState([]);
@@ -13,10 +13,8 @@ function Root() {
   },[])
   const handleFetchData = async()=>{
     const data = await fetchData('/publications');
-    console.log(data);
     setPublications(data);
   }
-  console.log(publications);
     return (
         <div>
             <Nav myItem={[

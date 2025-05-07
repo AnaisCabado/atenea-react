@@ -16,6 +16,7 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    align-items: center;
 
     gap: 1em
 }
@@ -34,7 +35,16 @@
     display: flex;
     flex-flow: column;
 }
-
+.publication-date {
+    font-size: .8rem;
+}
+.publication-category {
+    background-color: #FF951A;
+    color: black;
+    border-radius: 10px;
+    width: fit-content;
+    padding: .5em 1em;
+}
 .publication-img img{
     width: 100%;
     border-radius: 20px;

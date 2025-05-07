@@ -6,7 +6,7 @@ function PublicationCard({publication}) {
             <section className="publication-user-data">
                 <div className="user-data">
                     <img src="https://placehold.co/50x50" alt={"AUX"} className="user-data__img" />
-                    <p className="user-data__username">{publication.username}</p> {/* TODO CAMBIAR */}
+                    <p className="user-data__username">@username</p> {/* TODO CAMBIAR */}
                 </div>
                 <p className="publication-date">
                     {new Date(publication.created_at).toISOString().slice(0, 10)}
@@ -18,7 +18,7 @@ function PublicationCard({publication}) {
             <section className="publication-data">
                 <h2>{publication.title}</h2>
                 <p className="publication-text">{publication.text}</p>
-                <p className="publication-category">Category: {publication.category}</p>
+                <p className="publication-category">{publication.category}</p>
             </section>
             <section className="publication_buttons">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
