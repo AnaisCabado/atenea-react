@@ -1,14 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import './PublicationCard.css';
+import { publications, users, attachUsernameToPublications } from '../../utils/data';
 
 function PublicationCard({publication}) {
+
+    const enrichedPublications = attachUsernameToPublications(publications, users);
+    const enriched = enrichedPublications.find(pub => pub.publication_id === publication.publication_id);
+
     return(
         <article className="article publication">
             <section className="publication-user-data">
-                <NavLink to={`/users/${publication.user_id}`}>
+                <NavLink to={`/users/${enriched?.username}`}>
                     <div className="user-data">
                         <img src="https://placehold.co/50x50" alt={"AUX"} className="user-data__img" />
-                        <p className="user-data__username">{publication.user_id}</p>  {/* TODO CAMBIAR */}
+                        <p className="user-data__username">{enriched?.username}</p>  {/* TODO CAMBIAR */}
                     </div>
                 </NavLink>
 

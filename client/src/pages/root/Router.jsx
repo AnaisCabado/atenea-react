@@ -18,7 +18,7 @@ const router = createBrowserRouter([
             { path: 'feed', element: <Feed /> },
             { path: 'publications', element: <h1>Juan ramon</h1>},
             { path:'publications/create', element: <h1>Crear publicacion</h1>},
-            { path: 'profile/:id', element: <h1>Profile</h1> },
+            { path: 'users/:username', element: <h1>Profile</h1> },
         ],
     },
 ])
