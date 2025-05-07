@@ -1,0 +1,106 @@
+.user-profile {
+    top: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1em;
+}
+
+
+
+
+.user-profile__header {
+    width: 100%;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+
+    background-color: #008d76;
+    border: none;
+    border-radius: 40px;
+}
+
+.user-profile__header__img {
+    width: 100%;
+}
+
+.user-profile__img {
+    width: 30%;
+    position: absolute;
+    bottom: -2em;
+    right: 36%;
+
+    border: 1px solid #008d76;
+    border-radius: 100px;
+}
+
+
+
+
+.user-profile__data {
+    width: 100%;
+
+    display: flex;
+    flex-flow: column;
+
+    margin-top: 1em;
+}
+
+.data--info {
+    display: flex;
+    flex-flow: column;
+}
+.data--name-lastname {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+.data--username {
+    font-size: .8rem;
+    margin: 0;
+}
+
+.data--art-category {
+    font-size: 1.2rem;
+}
+
+.data--biography {
+    font-size: 1rem;
+}
+
+.data--location {
+    font-size: .8rem;
+}
+
+.data--follow {
+    display: flex;
+    flex-flow: row;
+    gap: 1em;
+}
+.data--following, .data--followers {
+    font-size: .8rem;
+}
+
+
+
+.user-profile__buttons {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    gap: 1em;
+}
+.follow-button, .chat-button {
+    width: 100%;
+
+    background-color: #008d76;
+}
