@@ -47,7 +47,6 @@
 
 .user-profile__data {
     width: 100%;
-
     display: flex;
     flex-flow: column;
 
@@ -93,11 +92,11 @@
 
 .user-profile__buttons {
     width: 100%;
-
     display: flex;
     flex-flow: row;
     justify-content: space-around;
     gap: 1em;
+    padding: 0 2em;
 }
 .follow-button, .chat-button {
     width: 100%;

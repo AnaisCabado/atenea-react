@@ -5,50 +5,63 @@ function newPublication() {
     const [publicationData, setPublicationData] = useState({
         title: "",
         text: "",
-        category: "event"
-        // date
+        category: "event",
+        date: ""
     });
-    
 
-    const handleTitle = (e)=> {
+
+    const handleTitle = (e) => {
         const newTitle = e.target.value;
         setPublicationData((oldPublication) => {
-            return {...oldPublication,title:newTitle}
+            return { ...oldPublication, title: newTitle }
         })
     }
 
-    const handleText = (e)=> {
+    const handleText = (e) => {
         const newText = e.target.value;
         setPublicationData((oldPublication) => {
-            return {...oldPublication,text:newText}
+            return { ...oldPublication, text: newText }
         })
     }
 
-    const handleCategory = (e)=> {
+    const handleCategory = (e) => {
         const newCategory = e.target.value;
         setPublicationData((oldPublication) => {
-            return {...oldPublication,category:newCategory}
+            return { ...oldPublication, category: newCategory }
         })
     }
 
-    const handleSubmit = async(e) => {
+    const handleDate = (e) => {
+        const newDate = e.target.value;
+        setPublicationData((oldPublication) => {
+            return { ...oldPublication, date: newDate }
+        })
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await createPublication(publicationData);
         console.log(response);
     }
 
     return (
-        <form onSubmit={handleSubmit} action="">
-            <label htmlFor="title">Title</label>
-            <input type="text" name="title" id="title" onChange={handleTitle} />
-            <label htmlFor="text">text</label>
-            <input type="text" name="text" id="text" onChange={handleText} />
-            <label htmlFor="category">category</label>
-            <input type="text" name="category" id="category" onChange={handleCategory} />
-            {/* <label htmlFor="date">date</label> */}
+        <article className="create-publication">
+            <h1 className="create-publication__title">New Publication</h1>
 
-            <button>Create</button>
-        </form>
+            <section className="create-publication__form">
+                <form onSubmit={handleSubmit} action="">
+                    <input type="text" name="title" id="title" onChange={handleTitle} placeholder="Your event title" />
+                    <input type="text" name="text" id="text" onChange={handleText} placeholder="Tell us about your event" />
+                    <select name="category" id="category" onChange={handleCategory}>
+                        <option value="event">Event</option>
+                        <option value="post">Post</option>
+                    </select>
+                    <input type="date" name="date" id="date" />
+
+                    <button>Create</button>
+                </form>
+            </section>
+        </article>
     )
 }
 

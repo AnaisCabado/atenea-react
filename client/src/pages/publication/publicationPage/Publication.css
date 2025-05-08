@@ -87,8 +87,10 @@
 .data--location {
     font-size: .8rem;
 }
+.publication__buttons {
+    padding: 0 2em;
+}
 .join-button {
     width: 100%;
-
     background-color: #008d76;
 }
