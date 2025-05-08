@@ -4,9 +4,10 @@ import Root from "./Root";
 import Home from "../home/Home";
 import Login from "../login/Login";
 import Register from "../register/Register";
-import Feed from "../feed/Feed";
+import Events from "../events/Events";
 import Profile from "../profile/Profile";
-import Publication from "../publication/Publication";
+import Publication from "../publication/publicationPage/Publication";
+import NewPublication from "../publication/newPublication/NewPublication";
 
 const router = createBrowserRouter([
     {
@@ -16,9 +17,8 @@ const router = createBrowserRouter([
             { path: '', element: <Home /> },
             { path: 'login', element: <Login /> },
             { path: 'register', element: <Register /> },
-            { path: 'feed', element: <Feed /> },
-            { path: 'publications', element: <h1>Juan ramon</h1>},
-            { path: 'publications/create', element: <h1>Crear publicacion</h1>},
+            { path: 'events', element: <h1>Juan ramon</h1>},
+            { path: 'publications/create', element: <NewPublication />},
             { path: 'users/:username', element: <Profile /> },
             { path: 'publications/:publicationId', element: <Publication /> },
         ],

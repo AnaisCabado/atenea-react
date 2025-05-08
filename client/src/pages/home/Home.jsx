@@ -1,5 +1,5 @@
 // import './Home.css';
-import PublicationList from "../publicationList/PublicationList";
+import PublicationList from "../publication/publicationList/PublicationList";
 import { useEffect, useState } from 'react';
 import fetchData from '../../utils/api/fetch';
 

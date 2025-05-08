@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/navbar/Nav';
-import PublicationList from './pages/publicationList/PublicationList';
+import PublicationList from './pages/publication/publicationList/PublicationList';
 import Auth from './components/auth/Auth';
 import RouteContext from './context/RouteContext';
 import { AuthProvider } from './context/AuthContext';

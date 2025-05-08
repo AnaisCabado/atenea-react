@@ -1,9 +1,9 @@
-// import './Feed.css';
-import PublicationList from "../publicationList/PublicationList";
+// import './Events.css';
+import PublicationList from "../publication/publicationList/PublicationList";
 import { useEffect, useState } from 'react';
 import fetchData from '../../utils/api/fetch';
 
-function Feed() {
+function Events() {
     const [publications,setPublications] = useState([]);
 
     useEffect(()=>{
@@ -21,4 +21,4 @@ function Feed() {
     )
 }
 
-export default Feed;
+export default Events;

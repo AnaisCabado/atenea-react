@@ -10,7 +10,13 @@ async function getAllPublications(){
 //     return response;
 // }
 
+async function createPublication(publicationData){
+    const response = await fetchData('/publications/create', 'POST', publicationData);
+    return response;
+}
+
 export {
     getAllPublications,
     // deletePublication
+    createPublication
 }

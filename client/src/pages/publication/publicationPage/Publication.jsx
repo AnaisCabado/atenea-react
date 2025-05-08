@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { publications, users } from '../../utils/data';
+import { publications, users } from '../../../utils/data';
 
 import './Publication.css';
 

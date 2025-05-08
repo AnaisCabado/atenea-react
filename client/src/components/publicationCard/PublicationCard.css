@@ -9,6 +9,9 @@
 
     width: 100%;
 }
+.publication h2, .publication p {
+    color: white;
+}
 
 .publication-user-data {
     width: 100%;

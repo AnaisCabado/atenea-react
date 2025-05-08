@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLoaderData, useSearchParams } from "react-router-dom";
-import PublicationCard from '../../components/publicationCard/PublicationCard';
-import { getAllPublications } from '../../utils/api/publication';
-import SearchFilter from "../../components/searchFilter/SearchFilter";
+import PublicationCard from '../../../components/publicationCard/PublicationCard';
+import { getAllPublications } from '../../../utils/api/publication';
+import SearchFilter from "../../../components/searchFilter/SearchFilter";
 
 import './PublicationList.css';
 
