@@ -13,7 +13,7 @@ function PublicationCard({publication}) {
                 <NavLink to={`/users/${enriched?.username}`}>
                     <div className="user-data">
                         <img src="https://placehold.co/50x50" alt={"AUX"} className="user-data__img" />
-                        <p className="user-data__username">{enriched?.username}</p>  {/* TODO CAMBIAR */}
+                        <p className="user-data__username">@{enriched?.username}</p>  {/* TODO CAMBIAR */}
                     </div>
                 </NavLink>
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
-// import './Login.css';
+import './Login.css';
 
 function Login() {
     // const [loginData, setLoginData] = useState({
@@ -31,17 +32,15 @@ function Login() {
 
     return (
         <article className="login">
-            <h1 className="create-publication__title">Login</h1>
+            <h1 className="login__title">Login</h1>
 
-            <section className="create-publication__form">
-                <form /* onSubmit={handleSubmit}  */action="">
-                    <input type="email" name="email" id="email" /* onChange={handleEmail} */ placeholder="Your email" />
-                    <input type="password" name="password" id="password" /* onChange={handlePassword} */ placeholder="Enter your password" />
+            <form /* onSubmit={handleSubmit}  */ action="" className="login__form">
+                <input type="email" name="email" id="email" /* onChange={handleEmail} */ placeholder="Your email" />
+                <input type="password" name="password" id="password" /* onChange={handlePassword} */ placeholder="Enter your password" />
 
-                    <button>Login</button>
-                </form>
-                <p className="register-link">Haven't an account yet? Register.</p>
-            </section>
+                <button>Login</button>
+            </form>
+            <NavLink to ='/register'><p className="register-link">Haven't an account yet? Register.</p></NavLink>
         </article>
     )
 }

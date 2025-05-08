@@ -1,0 +1,32 @@
+.login {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.login__title {
+    text-align: center;
+}
+
+.login__form {
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
+
+    padding: 1em;
+    border: 2px solid #008d76;
+    border-radius: 20px;
+
+    margin: 0 2em;
+}
+
+.login__form input {
+    padding: .5em 1em;
+    background-color: #2e2e2e;
+}
+
+.register-link {
+    width: 100%;
+
+    text-align: center;
+}

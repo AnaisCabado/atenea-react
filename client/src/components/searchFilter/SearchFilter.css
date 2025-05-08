@@ -23,7 +23,6 @@ input {
     border-radius: 20px;
 
     height: 2em;
-    width: 100%;
 }
 
 input::placeholder {
