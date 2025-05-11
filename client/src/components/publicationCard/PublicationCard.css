@@ -6,8 +6,6 @@
     border-radius: 20px;
     padding: 1em;
     gap: 1em;
-
-    width: 100%;
 }
 .publication h2, .publication p {
     color: white;
@@ -27,6 +25,7 @@
 .user-data {
     display: flex;
     flex-flow: row;
+    align-items: center;
     gap: 1em;
 }
 

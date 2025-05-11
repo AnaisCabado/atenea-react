@@ -8,7 +8,7 @@ function PublicationCard({publication}) {
     const enriched = enrichedPublications.find(pub => pub.publication_id === publication.publication_id);
 
     return(
-        <article className="article publication">
+        <article className="publication">
             <section className="publication-user-data">
                 <NavLink to={`/users/${enriched?.username}`}>
                     <div className="user-data">

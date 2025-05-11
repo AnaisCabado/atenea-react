@@ -46,7 +46,7 @@
 
 
 .user-profile__data {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-flow: column;
 
@@ -91,7 +91,7 @@
 
 
 .user-profile__buttons {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-flow: row;
     justify-content: space-around;
@@ -102,4 +102,24 @@
     width: 100%;
 
     background-color: #008d76;
+}
+
+
+
+
+
+@media (min-width: 768px) {
+    .user-profile__header {
+        max-height: 400px;
+    }
+    .user-profile__header__img {
+        width: 100%;
+        height: 100%;
+    }
+    .user-profile__img {
+        width: 15%;
+        position: absolute;
+        bottom: -4em;
+        right: 43%;
+    }
 }

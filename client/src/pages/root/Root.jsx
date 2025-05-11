@@ -15,7 +15,7 @@ function Root() {
     setPublications(data);
   }
     return (
-        <div>
+        <>
             <Nav />
 
             <main>
@@ -25,7 +25,7 @@ function Root() {
             <footer>
 
             </footer>
-        </div>
+        </>
     );
 }
 

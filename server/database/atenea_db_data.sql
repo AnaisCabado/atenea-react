@@ -50,3 +50,20 @@ INSERT INTO `post` (image, saved, publication_post_id) VALUES
 ('img10.jpg', b'0', 10);
 
 SELECT * FROM user;
+
+SELECT * 
+FROM publication 
+WHERE category = 'event';
+
+SELECT * 
+FROM event;
+
+SELECT p.*, e.date_time 
+FROM publication p
+LEFT JOIN event e ON e.publication_id = p.publication_id
+WHERE p.category = 'event' AND e.date_time IS NOT NULL;
+
+SELECT p.*, e.date_time 
+FROM publication p
+LEFT JOIN event e ON e.publication_id = p.publication_id
+WHERE p.category = 'event';

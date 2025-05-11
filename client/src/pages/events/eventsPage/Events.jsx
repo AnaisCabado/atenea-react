@@ -1,4 +1,4 @@
-// import './Events.css';
+import './Events.css';
 import EventsList from '../eventsList/EventsList';
 import { useEffect, useState } from 'react';
 import { getAllEvents } from '../../../utils/api/publication';

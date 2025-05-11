@@ -1,7 +1,22 @@
-.publication-list {
-    width: 100%;
+.search-publications {
     display: flex;
     flex-flow: column;
     align-items: center;
     gap: 1em;
+}
+.publication-list {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .publication-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1em;
+    }
+    
 }

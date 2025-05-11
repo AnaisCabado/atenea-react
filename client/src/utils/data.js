@@ -164,6 +164,30 @@ const users = [
     }
 ]
 
+const events = [
+    {
+        publication_id: 1,
+        date_time: "2025-05-01T18:00:00"
+    },
+    {
+        publication_id: 3,
+        date_time: "2025-05-03T20:00:00"
+    },
+    {
+        publication_id: 5,
+        date_time: "2025-05-05T17:30:00"
+    },
+    {
+        publication_id: 7,
+        date_time: "2025-05-08T19:00:00"
+    },
+    {
+        publication_id: 9,
+        date_time: "2025-05-10T16:00:00"
+    }
+];
+
+
 function attachUsernameToPublications(publications, users) {
     const userMap = users.reduce((map, user) => {
         map[user.user_id] = user.username;
@@ -179,5 +203,6 @@ function attachUsernameToPublications(publications, users) {
 export {
     publications,
     users,
+    events,
     attachUsernameToPublications
 };

@@ -1,6 +1,5 @@
 .search-bar {
     padding: 1em;
-    background-color: black;
     border: 1px solid #008d76;
     border-radius: 20px;
 
@@ -17,7 +16,8 @@
     padding: .5em 1em;
     gap: .5em;
 }
-input {
+.search-bar input {
+    width: 100%;
     background-color: #2e2e2e;
     border: none;
     border-radius: 20px;
