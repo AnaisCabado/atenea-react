@@ -12,7 +12,7 @@ async function logout(){
     const result = await fetchData('/logout', 'POST');
 }
 async function getUserInfo(){
-    const result = await fetchData('/user-info');
+    const result = await fetchData('/users/1');
     return result;
 }
 

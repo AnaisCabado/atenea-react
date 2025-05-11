@@ -1,14 +1,14 @@
-.register {
+.login {
     width: 100%;
     display: flex;
     flex-flow: column;
 }
 
-.register__title {
+.login__title {
     text-align: center;
 }
 
-.register__form {
+.login__form {
     display: flex;
     flex-flow: column;
     gap: 1em;
@@ -20,21 +20,22 @@
     margin: 0 2em;
 }
 
-.register__form input {
+.login__form input {
     padding: .5em 1em;
     background-color: #2e2e2e;
-    border-radius: 10px;
+    border: none;
+    border-radius: 20px;
 }
 
-.register__form button {
+.login__form button {
     padding: .5em 1em;
     background-color: #008d76;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     font-size: 1rem;
 }
 
-.login-link {
+.register-link {
     width: 100%;
 
     text-align: center;

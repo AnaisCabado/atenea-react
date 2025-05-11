@@ -11,7 +11,7 @@ async function login(req, res) {
       user_id: result.user_id
     };
     const token = createToken(data);
-    res.json({ token: token });
+    res.json({ token: token, username: result.username, email: result.email, user_id: result.user_id });
   } catch (error) {
     console.error(error);
     if (error.statusCode) {

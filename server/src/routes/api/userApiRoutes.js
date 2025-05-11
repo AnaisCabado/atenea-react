@@ -5,7 +5,10 @@ import { isLoggedInAPI } from "../../middleware/authMiddleware.js";
 
 const router = Router();
 
-router.get("/login",userApiController.login);
+router.post("/login",userApiController.login);
+router.get('/user-info', isLoggedInAPI, (req, res) => {
+    res.json(req.user);
+})
 
 router.get('/', isLoggedInAPI,userApiController.getAll);
 router.post('/create', userApiController.create);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import { useNavigate } from "react-router-dom";
-// import './Calendar.css';
+import './Calendar.css';
 
 
 function CalendarView({ events, onDateChange }) {
@@ -18,10 +18,10 @@ function CalendarView({ events, onDateChange }) {
     };
 
     return (
-        <div>
+        <section className="calendar-view">
             <h2>Select a date:</h2>
             <Calendar onChange={handleDateChange} value={date} />
-        </div>
+        </section>
     );
 }
 

@@ -48,18 +48,9 @@ function EventsList({ publications }) {
             publication.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-    const handleSearchTerm = (newTerm) => {
-        setSearchTerm(newTerm);
-        setSearchParams(params => {
-            params.set("search", newTerm);
-            return params;
-        });
-    };
-
     return (
         <article className="events-list">
             <CalendarView events={publications} onDateChange={handleDateChange} />
-            {/* Aquí deberías mostrar los eventos filtrados según la fecha */}
             {filteredPublications.length === 0 ? (
                 <p>No events found for the selected date.</p>
             ) : (

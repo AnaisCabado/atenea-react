@@ -1,32 +1,35 @@
 import Nav from '../../components/nav/Nav';
 import { useEffect, useState } from 'react';
 import fetchData from '../../utils/api/fetch';
+import { AuthProvider } from '../../context/AuthContext';
 import './Root.css';
 import { Outlet } from 'react-router-dom';
 
 function Root() {
-    const [publications,setPublications] = useState([]);
+  const [publications, setPublications] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     handleFetchData();
-  },[])
-  const handleFetchData = async()=>{
+  }, [])
+  const handleFetchData = async () => {
     const data = await fetchData('/publications');
     setPublications(data);
   }
-    return (
-        <>
-            <Nav />
+  return (
+    <>
+      <AuthProvider>
+        <Nav />
 
-            <main>
-                <Outlet />
-            </main>
+        <main>
+          <Outlet />
+        </main>
 
-            <footer>
+        <footer>
 
-            </footer>
-        </>
-    );
+        </footer>
+      </AuthProvider>
+    </>
+  );
 }
 
 export default Root;

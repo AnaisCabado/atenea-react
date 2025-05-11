@@ -12,23 +12,24 @@ const AuthProvider = ({children}) => {
     const [userData, setUserData] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        handleGetUserInfo();
-    }, [])
-    const handleGetUserInfo = async()=>{
-        const result = await getUserInfo();
-        console.log('user info', result);
-        if(result.user){
-            setUserData(result.user);
-        }
-    };
+    // useEffect(() => {
+    //     handleGetUserInfo();
+    // }, [])
+    // const handleGetUserInfo = async()=>{
+    //     const result = await getUserInfo();
+    //     console.log('user info', result);
+    //     if(result.user){
+    //         setUserData(result.user);
+    //     }
+    // };
     const handleLogin = async (email, password) => {
         const result = await login (email, password);
         if (result.error) {
             return result.error;
         } else {
-            console.log('login', result);
-            setUserData(result.user);
+            console.log('first', result);
+            setUserData(result);
+            console.log('last', userData);
             navigate('/');
             return null;
         }

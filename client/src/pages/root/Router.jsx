@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import Home from "../home/Home";
 
-import Login from "../login/Login";
+import Auth from "../auth/Auth";
 import Register from "../register/Register";
 
 import Publication from "../publication/publicationPage/Publication";
@@ -13,6 +13,7 @@ import NewPublication from "../publication/newPublication/NewPublication";
 
 
 import Profile from "../profile/Profile";
+import MyProfile from "../profile/myProfile/MyProfile";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         element: <Root />,
         children: [
             { path: '', element: <Home /> },
-            { path: 'login', element: <Login /> },
+            { path: 'login', element: <Auth /> },
             { path: 'register', element: <Register /> },
 
             { path: 'publications/:publicationId', element: <Publication /> },
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
             { path: 'publications/create', element: <NewPublication />},
 
             { path: 'users/:username', element: <Profile /> },
+            { path: 'my-profile', element: <MyProfile /> },
         ],
     },
 ])
