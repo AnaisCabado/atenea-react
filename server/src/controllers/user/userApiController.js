@@ -61,8 +61,12 @@ async function getAll(req, res) {
 
 async function create(req, res) {
   try {
-    req.body.password = await hash(req.body.password);
-    const response = await userController.controllerCreate(req.body);
+    const data = req.body;
+    data.password = await hash(data.password);
+    console.log('file', req.file);
+    data.image = req.file?.filename;
+    const response = await userController.controllerCreate(data);
+    console.log(response)
     
     res.json(response);
   } catch (error) {
@@ -77,10 +81,12 @@ async function create(req, res) {
 
 async function edit(req, res) {
   try {
-    req.body.password = await hash(req.body.password);
+    const data = req.body;
+    data.password = await hash(data.password);
+    data.image = req.file?.filename;
 
     const id = req.params.id;
-    const response = await userController.controllerEdit(id, req.body);
+    const response = await userController.controllerEdit(id, data);
     res.json(response);
   } catch (error) {
     console.error(error);

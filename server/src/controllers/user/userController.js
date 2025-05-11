@@ -3,6 +3,7 @@ import { where } from "sequelize";
 
 import { compare } from "../../utils/bcrypt.js";
 import userModel from "../../models/userModel.js";
+import { removeFile } from "../../utils/files.js";
 
 
 async function controllerLogin(email, password) {
@@ -52,6 +53,18 @@ async function controllerCreate(data) {
 }
 
 async function controllerEdit(id, data) {
+  let user = await userectModel.findByPk(id);
+
+  if (!user) {
+    if (data.image) {
+      removeFile(data.image);
+    }
+    throw new Error("user not found");
+  }
+  if (user.image) {
+    removeFile(user.image);
+  }
+
   const result = await userModel.update(data, {
     where: {
       user_id: id,
