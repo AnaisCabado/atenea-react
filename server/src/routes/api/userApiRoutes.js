@@ -7,11 +7,8 @@ import { upload } from "../../middleware/multer.js";
 const router = Router();
 
 router.post("/login",userApiController.login);
-router.get('/user-info', isLoggedInAPI, (req, res) => {
-    res.json(req.user);
-})
 
-router.get('/', isLoggedInAPI,userApiController.getAll);
+router.get('/', userApiController.getAll);
 router.post('/create', upload.single("image"), userApiController.create);
 
 router.get('/username/:username', userApiController.getByUsername);

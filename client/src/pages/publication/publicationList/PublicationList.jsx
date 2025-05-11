@@ -20,25 +20,12 @@ function PublicationList({ publications }) {
     }
 
     const handleSearchTerm = (newTerm) => {
-        console.log('hola')
         setSearchTerm(newTerm);
         setSearchParams(params => {
             params.set("search", newTerm);
-            console.log('holiwi')
             return params;
         })
-    }
-
-    const handleRemoveProduct = async (product_id) => {
-        const response = await deleteProduct(product_id);
-        console.log("delete", response)
-        if (response.error) {
-            // podemos mostrar que ha habido un error.
-        } else {
-            const newProducts = products.filter(product => product.product_id !== product_id);
-            setProducts(newProducts);
-        }
-    }
+    };
 
     const filteredPublications = publications.filter(publication => publication.title.toLowerCase().includes(searchTerm.toLowerCase())); /* TODO SEARCH BACK */
     console.log(filteredPublications)
@@ -48,7 +35,7 @@ function PublicationList({ publications }) {
             <SearchFilter onSearch={handleSearchTerm} />
             <div className="publication-list">
             {filteredPublications.map(publication => {
-                return <PublicationCard onRemove={handleRemoveProduct} publication={publication} key={publication.publication_id} />
+                return <PublicationCard publication={publication} key={publication.publication_id} />
             })}
             </div>
         </section>

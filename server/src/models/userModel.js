@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
 import Publication from "./publicationModel.js";
+import pool from "../config/sequelize.js";
 
 const User = sequelize.define('user', {
     user_id: {

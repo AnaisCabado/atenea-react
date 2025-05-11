@@ -35,14 +35,14 @@ const AuthProvider = ({children}) => {
         }
     };
     const handleLogout = () => {
-        // logout();
+        logout();
         setUserData(null);
-        navigate('/');
+        navigate('/login');
     }
     return (
-        <AuthContext value={{ userData:userData, onLogin: handleLogin, onLogout: handleLogout }}>
+        <AuthContext.Provider value={{ userData:userData, onLogin: handleLogin, onLogout: handleLogout }}>
             {children}
-        </AuthContext>
+        </AuthContext.Provider>
     )
 }
 

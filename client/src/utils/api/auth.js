@@ -16,8 +16,13 @@ async function getUserInfo(){
     return result;
 }
 
+function getUserImage(image) {
+    return 'http://localhost:3000/images/' + 'placeholder.png'/* image */;
+}
+
 export {
     login,
     logout,
-    getUserInfo
+    getUserInfo,
+    getUserImage
 }

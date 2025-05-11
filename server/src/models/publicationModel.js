@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
+import pool from "../config/sequelize.js";
 import User from "./userModel.js";
 
 
