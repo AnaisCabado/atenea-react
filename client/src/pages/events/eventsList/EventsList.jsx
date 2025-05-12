@@ -1,50 +1,52 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from "react-router-dom";
 import PublicationCard from '../../../components/publicationCard/PublicationCard';
 import CalendarView from '../../../components/calendar/Calendar';
-import { events } from '../../../utils/data';
+import { getEventByDate } from '../../../utils/api/publication';
 
 import './EventsList.css';
 
 function EventsList({ publications }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
-
+    const [events, setEvents] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
+
+    useEffect(() => {
+        if (selectedDate) {
+            handleLoadEvent();
+        }
+    }, [selectedDate]);
+
+    const handleLoadEvent = async () => {
+        try {
+            const data = await getEventByDate(selectedDate);
+            console.log('Eventos recibidos:', data);
+
+            const selectedDateStr = new Date(selectedDate).toLocaleDateString('en-CA');
+
+            const filteredData = data.filter(event => {
+                const eventDateStr = new Date(event.date_time).toLocaleDateString('en-CA');
+                return eventDateStr === selectedDateStr;
+            });
+
+            setEvents(filteredData);
+        } catch (error) {
+            console.error('Error fetching publications:', error);
+        }
+    };
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
-        console.log(date);
     };
 
-    const enrichedPublications = publications
-        .filter(pub => pub.category === 'event')
-        .map(pub => {
-            const event = events.find(ev => ev.publication_id === pub.publication_id);
-            return {
-                ...pub,
-                date_time: event?.date_time || null
-            };
-        });
+    const selectedPublications = publications.filter(publication =>
+        events.some(event => event.publication_id === publication.publication_id)
+    );
 
     const filteredPublications = selectedDate
-        ? enrichedPublications.filter(publication => {
-            const selectedDateObj = new Date(selectedDate);
-            if (isNaN(selectedDateObj)) {
-                console.error("Invalid date_time in publication:", selectedDate);
-                return false;
-            }
-            const publicationDate = new Date(publication.date_time);
-            if (isNaN(publicationDate)) {
-                console.error("Invalid date_time in publication:", publication.date_time);
-                return false;
-            }
-
-            const publicationDateStr = publicationDate.toLocaleDateString('en-CA');
-            const selectedDateStr = selectedDateObj.toLocaleDateString('en-CA');
-            return publicationDateStr === selectedDateStr;
-        })
-        : enrichedPublications.filter(publication =>
+        ? selectedPublications
+        : publications.filter(publication =>
             publication.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
@@ -55,9 +57,12 @@ function EventsList({ publications }) {
                 {filteredPublications.length === 0 ? (
                     <p>No events found for the selected date.</p>
                 ) : (
-                    filteredPublications.map(publication => {
-                        return <PublicationCard publication={publication} key={publication.publication_id} />
-                    })
+                    filteredPublications.map(publication => (
+                        <PublicationCard
+                            publication={publication}
+                            key={publication.publication_id}
+                        />
+                    ))
                 )}
             </section>
         </article>

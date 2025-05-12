@@ -32,14 +32,21 @@ function Register() {
 
     return (
         <article className="register">
-            <h1 className="register__title">Register</h1>
+            <img src="/src/assets/logotipo.svg" alt="logotipo" className="logotipo-register" />
 
 
-            <form onSubmit={handleSubmit}  action="" className="register__form">
-                <input type="text" name="name" id="name" placeholder="Complete name" />
+            <form onSubmit={handleSubmit} action="" className="register__form">
+                <h1>Register</h1>
+                
+                <label htmlFor="first_name">First name </label>
+                <input type="text" name="first_name" id="first_name" placeholder="First name" />
+                <label htmlFor="last_name">Last name </label>
+                <input type="text" name="last_name" id="last_name" placeholder="Last name" />
+                <label htmlFor="email">Email</label>
                 <input type="email" name="email" id="email" /* onChange={handleEmail} */ placeholder="Your email" />
-                <input type="password" name="password" id="password" /* onChange={handlePassword} */ placeholder="Create password" />
-                <input type="password" name="password" id="password" /* onChange={handlePassword} */ placeholder="Repeat password" />
+                <label htmlFor="password">Password</label>
+                <input type="first_password" name="first_password" id="first_password" /* onChange={handlePassword} */ placeholder="Create password" />
+                <input type="second_password" name="second_password" id="second_password" /* onChange={handlePassword} */ placeholder="Repeat password" />
 
                 <button>Register</button>
             </form>

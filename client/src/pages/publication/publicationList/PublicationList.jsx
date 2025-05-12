@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import PublicationCard from '../../../components/publicationCard/PublicationCard';
 import { getAllPublications } from '../../../utils/api/publication';
 import SearchFilter from "../../../components/searchFilter/SearchFilter";
 
 import './PublicationList.css';
 
-function PublicationList({ publications }) {
+function PublicationList() {
     const [publication, setPublication] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
@@ -14,10 +14,16 @@ function PublicationList({ publications }) {
     useEffect(() => {
         handleLoadPublications();
     }, [])
+    
     const handleLoadPublications = async () => {
-        const data = await getAllPublications()
-        setPublication(data);
-    }
+        try {
+            const data = await getAllPublications();
+            console.log('que funcione', data)
+            setPublication(data);
+        } catch (error) {
+            console.error('Error fetching publications:', error);            
+        }
+    };
 
     const handleSearchTerm = (newTerm) => {
         setSearchTerm(newTerm);
@@ -27,7 +33,9 @@ function PublicationList({ publications }) {
         })
     };
 
-    const filteredPublications = publications.filter(publication => publication.title.toLowerCase().includes(searchTerm.toLowerCase())); /* TODO SEARCH BACK */
+    const filteredPublications = publication.filter(pub => 
+        pub.title.toLowerCase().includes(searchTerm.toLowerCase())
+    ); /* TODO SEARCH BACK */
     console.log(filteredPublications)
 
     return (

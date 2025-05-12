@@ -6,6 +6,13 @@
     text-align: center;
 }
 
+.create-publication__form {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
 .create-publication__form form {
     display: flex;
     flex-flow: column;
@@ -16,6 +23,8 @@
     border-radius: 20px;
 
     text-align: left;
+
+    width: 80%;
 }
 
 .create-publication__form form label {
@@ -43,4 +52,6 @@
     border: none;
     border-radius: 10px;
     font-size: 1rem;
+
+    margin-top: 1em;
 }

@@ -79,6 +79,17 @@ async function remove(req, res) {
   }
 }
 
+async function savePublication(req, res) {
+  try {
+    const id = req.params.id;
+    const response = await publicationController.controllerSavePublication(id);
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+}
+
 export default {
   getAll,
   getByID,
@@ -86,4 +97,5 @@ export default {
   create,
   edit,
   remove,
+  savePublication
 };

@@ -26,7 +26,6 @@ function App() {
       <RouteContext value={{ route: route, onRouteChange: handleRouteChange }} >
         <AuthProvider>
           <Navbar />
-          {/* <Greeting /> */}
           {routes[route]}
         </AuthProvider>
       </RouteContext>

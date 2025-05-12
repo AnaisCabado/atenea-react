@@ -11,8 +11,9 @@ async function login(email, password) {
 async function logout(){
     const result = await fetchData('/logout', 'POST');
 }
-async function getUserInfo(){
-    const result = await fetchData('/users/1');
+
+async function getUserById(id) {
+    const result = await fetchData(`/users/${id}`, 'GET');
     return result;
 }
 
@@ -23,6 +24,6 @@ function getUserImage(image) {
 export {
     login,
     logout,
-    getUserInfo,
+    getUserById,
     getUserImage
 }

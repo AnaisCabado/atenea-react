@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-flow: column;
+    align-items: center;
 }
 
 .register__title {
@@ -14,16 +15,30 @@
     gap: 1em;
 
     padding: 1em;
-    border: 2px solid #FF9519;
+    border: 1px solid #FF9519;
     border-radius: 20px;
 
     margin: 0 2em;
+    width: 80%;
+}
+
+.register__form h1 {
+    text-align: center;
 }
 
 .register__form input {
-    padding: .5em 1em;
+    padding: 1em;
     background-color: #2e2e2e;
-    border-radius: 10px;
+    border-radius: 20px;
+    border: none;
+}
+.register__form input::placeholder {
+    font-size: 1rem;
+}
+
+.register__form label {
+    font-size: 1rem;
+    margin-left: .5em;
 }
 
 .register__form button {
@@ -33,10 +48,27 @@
     border: none;
     border-radius: 10px;
     font-size: 1rem;
+
+    margin-top: 1em;
 }
 
 .login-link {
     width: 100%;
 
     text-align: center;
+    color: white;
+
+    margin-top: 1em;
+}
+
+.logotipo-register {
+    width: 50%;
+    margin-top: 10%;
+}
+
+@media (min-width: 768px) {
+    .logotipo-register {
+        width: 20%;
+        margin-top: 5%;
+    }
 }

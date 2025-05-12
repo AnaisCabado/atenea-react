@@ -40,9 +40,11 @@ function Auth () {
     }
     return (
         <section className="auth-section">
+
             <img src="/src/assets/logotipo.svg" alt="logotipo" className="logotipo-login" />
             <p className="error">{error}</p>
             <form className="login__form" onSubmit={handleSubmit}>
+                <h1>Login</h1>
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" id= "email" value={userData.email} onChange={handleUserEmail} placeholder="Email" />
                 <label htmlFor="password">Password</label>

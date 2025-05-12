@@ -2,7 +2,8 @@
     padding: 1em;
     border: 1px solid #FF9519;
     border-radius: 20px;
-    width: 100%;
+    width: 80%;
+    max-width: 800px;
 }
 .search-svg-text {
     display: flex;
@@ -28,4 +29,5 @@ input::placeholder {
     color: white;
     font-size: .8rem;
     width: 100%;
+    font-size: 1rem;
 }

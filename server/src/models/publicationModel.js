@@ -3,7 +3,6 @@ import sequelize from "../config/sequelize.js";
 import pool from "../config/sequelize.js";
 import User from "./userModel.js";
 
-
 const Publication = sequelize.define("publication", {
   publication_id: {
     type: DataTypes.INTEGER,
@@ -30,6 +29,11 @@ const Publication = sequelize.define("publication", {
   user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
+  },
+  saved: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,     
+    allowNull: false,        
   },
 }, {
   timestamps: false,

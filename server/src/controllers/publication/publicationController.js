@@ -48,6 +48,17 @@ async function controllerRemove(id) {
   return result;
 }
 
+async function controllerSavePublication(id) {
+  const publication = await publicationModel.findByPk(id);
+  if (!publication) throw new Error('Publication not found');
+
+  publication.saved = true;
+  await publication.save();
+
+  return { success: true };
+}
+
+
 export default {
   controllerGetByID,
   controllerGetAll,
@@ -55,4 +66,5 @@ export default {
   controllerCreate,
   controllerEdit,
   controllerRemove,
+  controllerSavePublication
 };

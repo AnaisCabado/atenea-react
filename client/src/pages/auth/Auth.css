@@ -31,6 +31,10 @@
     max-width: 500px;
 }
 
+.login__form h1 {
+    text-align: center;
+}
+
 .login__form label {
     font-size: 1.2rem;
     margin-left: .5em;
@@ -54,15 +58,27 @@
     border: none;
     border-radius: 20px;
     font-size: 1rem;
+
+    margin-top: 1em;
 }
 
 .register-link {
     width: 100%;
 
     text-align: center;
+    margin-top: 1em;
 }
 
 .logotipo-login {
     width: 50%;
     margin-top: 30%;
+}
+
+
+
+@media (min-width: 768px) {
+    .logotipo-login {
+        width: 20%;
+        margin-top: 5%;
+    }
 }

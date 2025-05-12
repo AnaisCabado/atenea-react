@@ -45,3 +45,10 @@ nav {
     color: white;
     padding: 0;
 }
+
+.nav-user-data__img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    object-fit: cover;
+}
