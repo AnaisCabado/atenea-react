@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { createPublication } from "../../../utils/api/publication";
 
+import './NewPublication.css';
+
 function newPublication() {
     const [publicationData, setPublicationData] = useState({
         title: "",
@@ -50,12 +52,16 @@ function newPublication() {
 
             <section className="create-publication__form">
                 <form onSubmit={handleSubmit} action="">
+                    <label htmlFor="title">Title</label>
                     <input type="text" name="title" id="title" onChange={handleTitle} placeholder="Your event title" />
+                    <label htmlFor="text">Description</label>
                     <input type="text" name="text" id="text" onChange={handleText} placeholder="Tell us about your event" />
+                    <label htmlFor="category">Category</label>
                     <select name="category" id="category" onChange={handleCategory}>
                         <option value="event">Event</option>
                         <option value="post">Post</option>
                     </select>
+                    <label htmlFor="date">Date</label>
                     <input type="date" name="date" id="date" />
 
                     <button>Create</button>

@@ -16,7 +16,7 @@ function Home() {
 
     return (
         <article className="home-page">
-            <h1>STORIES</h1>
+            {<h1>Home</h1>}
             <PublicationList publications={publications} />
         </article>
     )

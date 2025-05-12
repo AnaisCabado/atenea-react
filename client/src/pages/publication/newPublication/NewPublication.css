@@ -1,0 +1,46 @@
+.create-publication {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1em;
+    text-align: center;
+}
+
+.create-publication__form form {
+    display: flex;
+    flex-flow: column;
+    gap: .5em;
+
+    padding: 1em;
+    border: 1px solid #FF9519;
+    border-radius: 20px;
+
+    text-align: left;
+}
+
+.create-publication__form form label {
+    font-size: 1rem;
+    margin-left: .5em;
+}
+
+.create-publication__form form input::placeholder {
+    font-size: 1rem;
+}
+
+.create-publication__form form input, .create-publication__form form select {
+    padding: .5em 1em;
+    background-color: #2e2e2e;
+    border: none;
+    border-radius: 20px;
+
+    font-size: 1rem;
+}
+
+.create-publication__form form button {
+    padding: .5em 1em;
+    background-color: #FF9519;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+}

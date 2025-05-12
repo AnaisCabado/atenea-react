@@ -13,7 +13,7 @@ nav {
     justify-content: center;
 }
 
-ul {
+.nav-list {
     width: 100%;
 
     display: flex;
@@ -27,9 +27,16 @@ ul {
     padding: 1em 0;
 }
 
-li a {
+
+
+.nav-item a, .nav-list li a, .nav-item  {
     color: white;
     text-decoration: none;
+    font-size: .8rem;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .nav-item button {

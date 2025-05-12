@@ -2,12 +2,14 @@
     display: flex;
     flex-flow: column;
 
-    border: 1px solid #008d76;
+    border: 1px solid #FF9519;
     border-radius: 20px;
     padding: 1em;
     gap: 1em;
+
+    text-align: left;
 }
-.publication h2, .publication p {
+.publication h2, .publication a {
     color: white;
 }
 
@@ -42,7 +44,7 @@
     font-size: .8rem;
 }
 .publication-category {
-    background-color: #008d76;
+    background-color: #FF9519;
     color: black;
     border-radius: 10px;
     width: fit-content;

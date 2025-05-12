@@ -4,7 +4,7 @@ import PublicationCard from '../../../components/publicationCard/PublicationCard
 import CalendarView from '../../../components/calendar/Calendar';
 import { events } from '../../../utils/data';
 
-// import './EventsList.css';
+import './EventsList.css';
 
 function EventsList({ publications }) {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -49,15 +49,17 @@ function EventsList({ publications }) {
         );
 
     return (
-        <article className="events-list">
+        <article className="events-list-page">
             <CalendarView events={publications} onDateChange={handleDateChange} />
-            {filteredPublications.length === 0 ? (
-                <p>No events found for the selected date.</p>
-            ) : (
-                filteredPublications.map(publication => {
-                    return <PublicationCard publication={publication} key={publication.publication_id} />
-                })
-            )}
+            <section className="events-list">
+                {filteredPublications.length === 0 ? (
+                    <p>No events found for the selected date.</p>
+                ) : (
+                    filteredPublications.map(publication => {
+                        return <PublicationCard publication={publication} key={publication.publication_id} />
+                    })
+                )}
+            </section>
         </article>
     );
 }

@@ -17,16 +17,6 @@
     position: relative;
 }
 
-.back-button {
-    position: absolute;
-    top: 1em;
-    left: 1em;
-
-    background-color: #008d76;
-    border: none;
-    border-radius: 40px;
-}
-
 .publication__header__img {
     width: 100%;
 }
@@ -50,6 +40,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.publication-user-data--info a {
+    color: white;
+}
 .data-user-info {
     display: flex;
     flex-flow: row;
@@ -58,7 +51,7 @@
 .user-img {
     width: 3em;
 
-    border: 1px solid #008d76;
+    border: 1px solid #FF9519;
     border-radius: 100px;
 
     object-fit: cover;
@@ -92,5 +85,7 @@
 }
 .join-button {
     width: 100%;
-    background-color: #008d76;
+    max-width: 250px;
+    background-color: #FF9519;
+    color: black;
 }

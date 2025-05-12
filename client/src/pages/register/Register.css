@@ -14,7 +14,7 @@
     gap: 1em;
 
     padding: 1em;
-    border: 2px solid #008d76;
+    border: 2px solid #FF9519;
     border-radius: 20px;
 
     margin: 0 2em;
@@ -28,7 +28,8 @@
 
 .register__form button {
     padding: .5em 1em;
-    background-color: #008d76;
+    background-color: #FF9519;
+    color: black;
     border: none;
     border-radius: 10px;
     font-size: 1rem;

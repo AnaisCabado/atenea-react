@@ -30,7 +30,7 @@ body {
   min-height: 100vh;
   width: 100vw;
 
-  background-color: rgb(14, 14, 15);
+  background-color: rgb(17, 17, 17);
 }
 
 main {
@@ -45,7 +45,7 @@ main {
 
 h1 {
   margin: .5em 0;
-  font-size: 3.2em;
+  font-size: 2rem;
   line-height: 1.1;
 }
 p {

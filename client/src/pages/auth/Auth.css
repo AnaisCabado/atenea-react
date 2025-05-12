@@ -1,7 +1,13 @@
-.login {
+.auth-section {
     width: 100%;
     display: flex;
     flex-flow: column;
+    text-align: center;
+    color: white;
+}
+
+.auth-section a {
+    color: white;
 }
 
 .login__title {
@@ -14,22 +20,33 @@
     gap: 1em;
 
     padding: 1em;
-    border: 2px solid #008d76;
+    border: 1px solid #FF9519;
     border-radius: 20px;
 
     margin: 0 2em;
+    text-align: left;
+}
+
+.login__form label {
+    font-size: 1.2rem;
+    margin-left: .5em;
 }
 
 .login__form input {
-    padding: .5em 1em;
+    padding: 1em;
     background-color: #2e2e2e;
     border: none;
-    border-radius: 20px;
+    border-radius: 20px;;
+}
+
+.login__form input::placeholder {
+    font-size: 1rem;
 }
 
 .login__form button {
     padding: .5em 1em;
-    background-color: #008d76;
+    background-color: #FF9519;
+    color: black;
     border: none;
     border-radius: 20px;
     font-size: 1rem;

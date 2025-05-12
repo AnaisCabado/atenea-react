@@ -19,13 +19,24 @@
 }
 
 .back-button {
+    width: 2.5em;
+    height: 2.5em;
+
     position: absolute;
     top: 1em;
     left: 1em;
 
-    background-color: #008d76;
+    background-color: #FF9519;
+    color: black;
+
     border: none;
     border-radius: 40px;
+
+    font-size: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .user-profile__header__img {
@@ -38,7 +49,7 @@
     bottom: -2em;
     right: 36%;
 
-    border: 1px solid #008d76;
+    border: 2px solid #FF9519;
     border-radius: 100px;
 }
 
@@ -100,10 +111,18 @@
 }
 .follow-button, .chat-button {
     width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: .5em 1em;
+    font-size: 1rem;
 
-    background-color: #008d76;
+    background-color: #FF9519;
+    color: black;
 }
 
+.user-profile__publications {
+    text-align: center;
+}
 
 
 

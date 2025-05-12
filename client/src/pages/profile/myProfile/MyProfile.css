@@ -19,14 +19,24 @@
 }
 
 .edit-profile-button {
+    width: 2.5em;
+    height: 2.5em;
+
     position: absolute;
     top: 1em;
     left: 1em;
 
-    background-color: #008d76;
+    background-color: #FF9519;
+    color: black;
+
     border: none;
     border-radius: 40px;
-    padding: .5em 1em;
+
+    font-size: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .my-user-profile__header__img {
@@ -39,7 +49,7 @@
     bottom: -2em;
     right: 36%;
 
-    border: 1px solid #008d76;
+    border: 1px solid #FF9519;
     border-radius: 100px;
 }
 
@@ -95,17 +105,27 @@
     width: 90%;
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: center;
     gap: 1em;
     padding: 0 2em;
 }
 .saved-dates-button, .logout-button {
     width: 100%;
+    max-width: 250px;
 
-    background-color: #008d76;
+    background-color: #FF9519;
+    color: black;
     padding: .5em 1em;
     border: none;
     border-radius: 10px;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+}
+
+.my-user-profile__publications {
+    text-align: center;
 }
 
 
@@ -113,14 +133,14 @@
 
 
 @media (min-width: 768px) {
-    .user-profile__header {
+    .my-user-profile__header {
         max-height: 400px;
     }
-    .user-profile__header__img {
+    .my-user-profile__header__img {
         width: 100%;
         height: 100%;
     }
-    .user-profile__img {
+    .my-user-profile__img {
         width: 15%;
         position: absolute;
         bottom: -4em;
