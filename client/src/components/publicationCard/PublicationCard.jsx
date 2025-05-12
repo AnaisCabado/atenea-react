@@ -1,12 +1,15 @@
-import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useEffect, useState , useContext} from 'react';
 import { getAllPublications, getAllEvents, savePublication } from '../../utils/api/publication';
 import { getUserById, getUserImage } from '../../utils/api/auth';
+import { AuthContext } from '../../context/AuthContext';
 
 import './PublicationCard.css';
 
 function PublicationCard({ publication }) {
     const [user, setUser] = useState([]);
+    const { userData } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         handleLoadUser();
@@ -22,6 +25,12 @@ function PublicationCard({ publication }) {
     };
 
     const handleSave = async () => {
+        if (!userData) { 
+            alert('Debes estar logueado para guardar una publicación');
+            navigate.push('/login');
+            return;
+        }
+
         try {
             await savePublication(publication.publication_id);
             alert("Publicación guardada con éxito");

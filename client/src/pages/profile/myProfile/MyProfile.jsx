@@ -66,7 +66,7 @@ function MyProfile() {
             </section>
 
             <section className="my-user-profile__buttons">
-                <button className="saved-dates-button">Saved dates</button>
+                <button className="saved-dates-button">Saved publications</button>
                 <button className="logout-button" onClick={onLogout}>Logout</button>
             </section>
 
