@@ -4,6 +4,8 @@
     flex-flow: column;
     text-align: center;
     color: white;
+
+    align-items: center;
 }
 
 .auth-section a {
@@ -25,6 +27,8 @@
 
     margin: 0 2em;
     text-align: left;
+    width: 80%;
+    max-width: 500px;
 }
 
 .login__form label {
@@ -56,4 +60,9 @@
     width: 100%;
 
     text-align: center;
+}
+
+.logotipo-login {
+    width: 50%;
+    margin-top: 30%;
 }

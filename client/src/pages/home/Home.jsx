@@ -16,7 +16,7 @@ function Home() {
 
     return (
         <article className="home-page">
-            {<h1>Home</h1>}
+            <img src="/src/assets/logotipo.svg" alt="logotipo" className='logotipo-home-page' />
             <PublicationList publications={publications} />
         </article>
     )

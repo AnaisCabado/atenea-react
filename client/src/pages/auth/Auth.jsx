@@ -40,7 +40,7 @@ function Auth () {
     }
     return (
         <section className="auth-section">
-            <h1>Login</h1>
+            <img src="/src/assets/logotipo.svg" alt="logotipo" className="logotipo-login" />
             <p className="error">{error}</p>
             <form className="login__form" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>

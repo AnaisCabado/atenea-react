@@ -19,7 +19,6 @@ function CalendarView({ events, onDateChange }) {
 
     return (
         <section className="calendar-view">
-            <h2>Select a date:</h2>
             <Calendar onChange={handleDateChange} value={date} />
         </section>
     );
