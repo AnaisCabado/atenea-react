@@ -15,13 +15,13 @@ function EventsList({ publications }) {
     useEffect(() => {
         handleLoadEvents();
     }, [])
-    
+
     const handleLoadEvents = async () => {
         try {
             const data = await getAllEvents();
             setEvents(data);
         } catch (error) {
-            console.error('Error fetching publications:', error);            
+            console.error('Error fetching publications:', error);
         }
     };
 
@@ -62,9 +62,20 @@ function EventsList({ publications }) {
             publication.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
+    const handleShowAll = () => {
+        setSearchTerm('');
+        setSelectedDate(null); // <-- limpia filtro de fecha
+        setSearchParams(params => {
+            params.delete("search");
+            return params;
+        });
+    };
+
+
     return (
         <article className="events-list-page">
             <CalendarView events={publications} onDateChange={handleDateChange} />
+            <button onClick={handleShowAll}>TODAS LAS PUBLICACIONES</button>
             <section className="events-list">
                 {filteredPublications.length === 0 ? (
                     <p>No events found for the selected date.</p>
