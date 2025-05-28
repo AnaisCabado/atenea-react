@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
+import publicationModel from "./publicationModel.js"; // asegúrate de que esto exista y sea correcto
 
 const Event = sequelize.define("event", {
   event_id: {
@@ -11,11 +12,6 @@ const Event = sequelize.define("event", {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  saved: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-  },
   publication_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -24,5 +20,7 @@ const Event = sequelize.define("event", {
   timestamps: false,
   tableName: "event",
 });
+
+Event.belongsTo(publicationModel, { foreignKey: "publication_id" });
 
 export default Event;

@@ -12,10 +12,6 @@ const Post = sequelize.define("post", {
     type: DataTypes.STRING(125),
     allowNull: true,
   },
-  saved: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
   publication_post_id: {
     type: DataTypes.INTEGER,
     allowNull: false,

@@ -8,7 +8,9 @@ async function controllerGetByID(id) {
 }
 
 async function controllerGetAll() {
-  const publications = await publicationModel.findAll();
+  const publications = await publicationModel.findAll({
+    order: [["created_at", "DESC"]]
+  });
   return publications;
 }
 
@@ -25,8 +27,13 @@ async function controllerGetByUser(username) {
 }
 
 async function controllerCreate(data) {
-  const result = await publicationModel.create(data);
-  return result;
+  try {
+    const result = await publicationModel.create(data);
+    return result;
+  } catch (error) {
+    console.error('Error en controllerCreate:', error);
+    throw error;
+  }
 }
 
 async function controllerEdit(id, data) {

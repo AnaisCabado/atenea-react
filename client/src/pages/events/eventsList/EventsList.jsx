@@ -38,19 +38,16 @@ function EventsList({ publications }) {
     const handleLoadEventByDate = async () => {
         try {
             const data = await getEventByDate(selectedDate);
-
-            const selectedDateStr = new Date(selectedDate).toLocaleDateString('en-CA');
-
-            const filteredData = data.filter(event => {
-                const eventDateStr = new Date(event.date_time).toLocaleDateString('en-CA');
-                return eventDateStr === selectedDateStr;
-            });
-
-            setEvents(filteredData);
+            setEvents(data);
+            console.log('selectedDate:', selectedDate);
+            console.log('data:', data);
+            console.log('events:', events);
         } catch (error) {
             console.error('Error fetching publications:', error);
         }
     };
+
+
 
     const selectedPublications = publications.filter(publication =>
         events.some(event => event.publication_id === publication.publication_id)

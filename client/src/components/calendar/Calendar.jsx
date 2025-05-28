@@ -10,7 +10,7 @@ function CalendarView({ events, onDateChange }) {
     const handleDateChange = (selectedDate) => {
         setDate(selectedDate);
 
-        const selectedDateStr = selectedDate.toLocaleDateString('en-CA');
+        const selectedDateStr = selectedDate.toISOString().slice(0, 10);
 
         if (onDateChange && typeof onDateChange === 'function') {
             onDateChange(selectedDateStr);

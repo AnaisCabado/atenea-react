@@ -4,6 +4,7 @@ import PublicationList from './pages/publication/publicationList/PublicationList
 import Auth from './components/auth/Auth';
 import RouteContext from './context/RouteContext';
 import { AuthProvider } from './context/AuthContext';
+import { PublicationProvider } from './context/PublicationContext';
 import './App.css'
 // import Greeting from './components/greeting/Greeting';
 
@@ -23,12 +24,14 @@ function App() {
   }
   return (
     <>
-      <RouteContext value={{ route: route, onRouteChange: handleRouteChange }} >
+      <RouteContext.Provider value={{ route: route, onRouteChange: handleRouteChange }} >
         <AuthProvider>
-          <Navbar />
-          {routes[route]}
+          <PublicationProvider>
+            <Navbar />
+            {routes[route]}
+          </PublicationProvider>
         </AuthProvider>
-      </RouteContext>
+      </RouteContext.Provider>
     </>
   )
 }

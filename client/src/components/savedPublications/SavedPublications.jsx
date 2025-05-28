@@ -4,6 +4,7 @@ import PublicationCard from "../publicationCard/PublicationCard";
 
 // import './SavedPublications.css';
 
+
 function SavedPublications({ publications, handleSearchTerm }) {
 	if (!publications) return null;
 
