@@ -1,16 +1,17 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
-import { getAllPublications, getAllEvents, savePublication } from '../../utils/api/publication';
+
+import { getAllPublications, getAllEvents, savePublication, unsavePublication } from '../../utils/api/publication';
 import { getUserById, getUserImage } from '../../utils/api/auth';
 import { AuthContext } from '../../context/AuthContext';
 
 import './PublicationCard.css';
 
-function PublicationCard({ publication }) {
+function PublicationCard({ publication, isSaved: initialIsSaved = false }) {
     const [user, setUser] = useState([]);
     const { userData } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [isSaved, setIsSaved] = useState(false);
+    const [isSaved, setIsSaved] = useState(initialIsSaved);
 
     useEffect(() => {
         handleLoadUser();
@@ -34,11 +35,11 @@ function PublicationCard({ publication }) {
 
         try {
             if (isSaved) {
-                await unsavePublication(publication.publication_id);
+                await unsavePublication(publication.publication_id, userData.user_id);
                 setIsSaved(false);
                 alert("Publicación desguardada");
             } else {
-                await savePublication(publication.publication_id);
+                await savePublication(publication.publication_id, userData.user_id);
                 setIsSaved(true);
                 alert("Publicación guardada");
             }

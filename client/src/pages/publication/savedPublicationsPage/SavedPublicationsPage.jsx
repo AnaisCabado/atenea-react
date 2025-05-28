@@ -4,10 +4,11 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import PublicationCard from '../../../components/publicationCard/PublicationCard';
 import { getSavedPublications } from '../../../utils/api/publication';
+import SavedPublications from '../../../components/savedPublications/SavedPublications';
 
-// import './SavedPublications.css';
+// import './SavedPublicationsPage.css';
 
-function SavedPublications() {
+function SavedPublicationsPage() {
     const navigate = useNavigate();
     const [publications, setPublications] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -23,13 +24,13 @@ function SavedPublications() {
     const handleLoadSavedPublications = async () => {
         try {
             const data = await getSavedPublications(userData.user_id);
-            setPublications(Array.isArray(data) ? data : []); // <-- Fallback a array vacío
+            console.log('Publicaciones guardadas:', data);  // Para debug
+            setPublications(Array.isArray(data) ? data : []);
         } catch (error) {
-            console.error('Error fetching saved publications:', error);            
-            setPublications([]); // <-- Evita estado nulo ante error
+            console.error('Error fetching saved publications:', error);
+            setPublications([]);
         }
     };
-    
 
     const handleSearchTerm = (newTerm) => {
         setSearchTerm(newTerm);
@@ -39,11 +40,9 @@ function SavedPublications() {
         });
     };
 
-    const filteredPublications = (publications || []).filter(pub => 
+    const filteredPublications = (publications || []).filter(pub =>
         pub.title?.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    
-    
 
     return (
         <section className="saved-publications">
@@ -55,12 +54,14 @@ function SavedPublications() {
                 </button>
             </section>
             <div className="publication-list">
-                {filteredPublications.map(publication => (
-                    <PublicationCard publication={publication} key={publication.publication_id} />
-                ))}
+                <SavedPublications
+                    publications={filteredPublications}
+                    handleSearchTerm={handleSearchTerm}
+                />
             </div>
         </section>
     );
 }
 
-export default SavedPublications;
+
+export default SavedPublicationsPage;

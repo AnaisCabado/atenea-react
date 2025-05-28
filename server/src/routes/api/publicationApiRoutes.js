@@ -15,5 +15,7 @@ router.get('/:id', publicationApiController.getByID);
 router.put('/:id/edit', publicationApiController.edit);
 router.delete("/:id/delete", publicationApiController.remove);
 router.post('/:id/save', publicationApiController.savePublication);
+router.get('/saved/:userId', publicationApiController.getSavedPublications);
+router.delete('/:id/unsave', publicationApiController.unsavePublication);
 
 export default router;
