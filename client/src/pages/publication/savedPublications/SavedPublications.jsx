@@ -1,6 +1,7 @@
+import { AuthContext } from '../../../context/AuthContext';
 import { useContext, useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../context/AuthContext';
+
 import PublicationCard from '../../../components/publicationCard/PublicationCard';
 import { getSavedPublications } from '../../../utils/api/publication';
 

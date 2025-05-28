@@ -1,35 +1,41 @@
 import { verifyToken } from "../utils/token.js";
+import {
+  UnauthorizedError,
+  TokenExpiredError,
+  InvalidTokenError
+} from "../utils/errors.js";
 
-function isLoggedInSession(req,res,next){
-    const user  = req.session.user;
-    
-    if(!user){
-        return res.redirect("/login?error=You+are+not+logged+in")
-    }
+function isLoggedInAPI(req, res, next) {
+  const authorization = req.headers.authorization;
+  console.log("authorization", authorization);
+
+  if (!authorization || !authorization.startsWith("Bearer ")) {
+    return next(new UnauthorizedError("Token no proporcionado"));
+  }
+
+  const token = authorization.split(" ")[1];
+
+  try {
+    const decoded = verifyToken(token);
+
+    req.user = {
+      _id: decoded._id,
+      role: decoded.role,
+    };
+
     next();
-}
-function isLoggedInAPI(req,res,next){
-    const tokenFromCookie  = req.cookies?.token;
-    const tokenFromHeader = req.headers?.authorization?.split(' ')[1];
-    const token = tokenFromCookie || tokenFromHeader;
-
-    if(!token){
-        res.status(401).json({error:"Kai does not allow you to pass"});
+  } catch (error) {
+    if (error.name === "TokenExpiredError") {
+      return next(new TokenExpiredError());
     }
-    const result = verifyToken(token);
-    console.log("token verified",result);
-    if(result){
-        req.user = {
-            user_id: result.user_id,
-        }
-        next();
-    }else{
-        res.status(401).json({error:"Kai does not allow you to pass"});
+
+    if (error.name === "JsonWebTokenError") {
+      return next(new InvalidTokenError());
     }
+
+    console.error("Error inesperado en verificación de token:", error);
+    return next(error);
+  }
 }
 
-
-export {
-    isLoggedInSession,
-    isLoggedInAPI
-}
+export { isLoggedInAPI };

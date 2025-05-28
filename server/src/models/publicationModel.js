@@ -30,11 +30,6 @@ const Publication = sequelize.define("publication", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  saved: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,     
-    allowNull: false,        
-  },
 }, {
   timestamps: false,
   tableName: "publication",

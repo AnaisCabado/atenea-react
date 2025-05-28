@@ -2,6 +2,7 @@ import fetchData from "./fetch.js";
 
 async function getAllPublications() {
     const data = await fetchData('/publications');
+    console.log('api', data)
 
     return data;
 }

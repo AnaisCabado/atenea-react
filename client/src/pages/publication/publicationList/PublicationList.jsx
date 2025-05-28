@@ -19,6 +19,7 @@ function PublicationList() {
         try {
             const data = await getAllPublications();
             setPublication(data);
+            console.log('data', data);
         } catch (error) {
             console.error('Error fetching publications:', error);            
         }
@@ -32,22 +33,14 @@ function PublicationList() {
         })
     };
 
-    const handleShowAll = () => {
-        setSearchTerm('');
-        setSearchParams(params => {
-            params.delete("search");
-            return params;
-        });
-    };
-
     const filteredPublications = publication.filter(pub => 
         pub.title.toLowerCase().includes(searchTerm.toLowerCase())
     ); /* TODO SEARCH BACK */
+    console.log(filteredPublications)
 
     return (
         <section className="search-publications">
             <SearchFilter onSearch={handleSearchTerm} />
-            <button onClick={handleShowAll}>TODAS LAS PUBLICACIONES</button>
             <div className="publication-list">
             {filteredPublications.map(publication => {
                 return <PublicationCard publication={publication} key={publication.publication_id} />
