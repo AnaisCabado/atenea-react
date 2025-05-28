@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import fetchData from "../../../utils/api/fetch";
 import { getUserImage } from "../../../utils/api/auth";
 
@@ -66,7 +65,9 @@ function MyProfile() {
             </section>
 
             <section className="my-user-profile__buttons">
-                <button className="saved-dates-button">Saved publications</button>
+                <NavLink to='/publications/saved'>
+                    <button className="saved-dates-button">Saved publications</button>
+                </NavLink>
                 <button className="logout-button" onClick={onLogout}>Logout</button>
             </section>
 

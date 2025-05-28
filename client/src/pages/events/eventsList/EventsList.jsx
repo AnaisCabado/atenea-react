@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from "react-router-dom";
 import PublicationCard from '../../../components/publicationCard/PublicationCard';
 import CalendarView from '../../../components/calendar/Calendar';
-import { getEventByDate } from '../../../utils/api/publication';
+import { getAllEvents, getEventByDate } from '../../../utils/api/publication';
 
 import './EventsList.css';
 
@@ -13,15 +13,31 @@ function EventsList({ publications }) {
     const [selectedDate, setSelectedDate] = useState(null);
 
     useEffect(() => {
+        handleLoadEvents();
+    }, [])
+    
+    const handleLoadEvents = async () => {
+        try {
+            const data = await getAllEvents();
+            setEvents(data);
+        } catch (error) {
+            console.error('Error fetching publications:', error);            
+        }
+    };
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
+    useEffect(() => {
         if (selectedDate) {
-            handleLoadEvent();
+            handleLoadEventByDate();
         }
     }, [selectedDate]);
 
-    const handleLoadEvent = async () => {
+    const handleLoadEventByDate = async () => {
         try {
             const data = await getEventByDate(selectedDate);
-            console.log('Eventos recibidos:', data);
 
             const selectedDateStr = new Date(selectedDate).toLocaleDateString('en-CA');
 
@@ -34,10 +50,6 @@ function EventsList({ publications }) {
         } catch (error) {
             console.error('Error fetching publications:', error);
         }
-    };
-
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
     };
 
     const selectedPublications = publications.filter(publication =>

@@ -3,11 +3,6 @@ import fetchData from "./fetch.js";
 async function getAllPublications() {
     const data = await fetchData('/publications');
 
-    // Opcional: chequear si hubo un error personalizado
-    if (data.status && data.status !== 200) {
-        throw new Error('Failed to fetch publications');
-    }
-
     return data;
 }
 
@@ -18,8 +13,8 @@ async function getAllEvents(){
 }
 
 async function getEventByDate(date){
-    const events = await fetchData(`/events/${date}`);
-    return events;
+    const data = await fetchData(`/events/${date}`);
+    return data.events || [];
 }
 
 // async function deletePublication(id){
@@ -42,11 +37,35 @@ async function savePublication(id) {
     return res;
 }
 
+async function getSavedPublications(userId) {
+    try {
+        const response = await fetch(`/api/publications/saved/${userId}`);
+
+        const text = await response.text(); // primero lee como texto
+        console.log("Raw response text:", text); // 🔍 inspección
+
+        try {
+            const data = JSON.parse(text); // intenta parsear manualmente
+            return Array.isArray(data) ? data : [];
+        } catch (parseError) {
+            console.error("JSON parse failed:", parseError);
+            return [];
+        }
+
+    } catch (error) {
+        console.error("getSavedPublications error:", error);
+        return [];
+    }
+};
+
+
+
 export {
     getAllPublications,
     // deletePublication
     getAllEvents,
     getEventByDate,
     createPublication,
-    savePublication
+    savePublication,
+    getSavedPublications
 }

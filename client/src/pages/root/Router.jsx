@@ -10,6 +10,7 @@ import Publication from "../publication/publicationPage/Publication";
 import Events from "../events/eventsPage/Events";
 // import Join from "../join/Join";
 import NewPublication from "../publication/newPublication/NewPublication";
+import SavedPublications from "../publication/savedPublications/SavedPublications";
 
 
 import Profile from "../profile/Profile";
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
             { path: 'events/:date', element: <Events /> },
             // { path: 'join', element: <Join /> },
             { path: 'publications/create', element: <NewPublication />},
+            { path: 'publications/saved', element: <SavedPublications />},
 
             { path: 'users/:username', element: <Profile /> },
             { path: 'my-profile', element: <MyProfile /> },

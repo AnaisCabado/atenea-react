@@ -60,11 +60,7 @@ function Publication() {
                 <div className="publication-user-data--info">
                     <NavLink to={`/users/${user.username}`}>
                         <div className="data-user-info">
-                            <img
-                                src={user.image}
-                                alt="Imagen de usuario"
-                                className="user-img"
-                            />
+                        <img src="https://placehold.co/50x50" alt="AUX" className="user-img" />
                             <div className="publication-user">
                                 <p className="data--name-lastname">{user.first_name} {user.last_name}</p>
                                 <p className="data--username">@{user.username}</p>

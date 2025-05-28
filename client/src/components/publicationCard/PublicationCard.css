@@ -62,3 +62,9 @@
     align-items: center;
     gap: 1em;
 }
+
+.publication_buttons button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}

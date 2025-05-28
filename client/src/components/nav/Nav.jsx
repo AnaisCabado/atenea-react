@@ -8,7 +8,6 @@ import './Nav.css';
 
 function Navbar() {
     const { onLogout, userData } = useContext(AuthContext);
-    console.log("User data", userData);
     return (
         <nav>
             <ul className="nav-list">

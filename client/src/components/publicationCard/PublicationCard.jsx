@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useEffect, useState , useContext} from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getAllPublications, getAllEvents, savePublication } from '../../utils/api/publication';
 import { getUserById, getUserImage } from '../../utils/api/auth';
 import { AuthContext } from '../../context/AuthContext';
@@ -7,38 +7,46 @@ import { AuthContext } from '../../context/AuthContext';
 import './PublicationCard.css';
 
 function PublicationCard({ publication }) {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState(null);
+    const [isSaved, setIsSaved] = useState(false);
     const { userData } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
-        handleLoadUser();
-    }, [])
+        const loadUser = async () => {
+            try {
+                const userData = await getUserById(publication.user_id);
+                setUser(userData);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
 
-    const handleLoadUser = async () => {
-        try {
-            const data = await getUserById(publication.user_id);
-            setUser(data);
-        } catch (error) {
-            console.error('Error fetching publications:', error);
-        }
-    };
+        loadUser();
+    }, [publication.user_id]);
 
-    const handleSave = async () => {
-        if (!userData) { 
+    const handleToggleSave = async () => {
+        if (!userData) {
             alert('Debes estar logueado para guardar una publicación');
-            navigate.push('/login');
+            navigate('/login');
             return;
         }
 
         try {
-            await savePublication(publication.publication_id);
-            alert("Publicación guardada con éxito");
+            if (isSaved) {
+                await unsavePublication(publication.publication_id);
+                setIsSaved(false);
+                alert('Publicación desguardada');
+            } else {
+                await savePublication(publication.publication_id);
+                setIsSaved(true);
+                alert('Publicación guardada');
+            }
         } catch (error) {
-            console.error(error);
-            alert("Error al guardar publicación");
+            console.error('Error saving publication', error);
+            alert('Error guardando publicación'); /* TODO CAMBIAR ALERTS */
         }
-    };
+    }
 
     return (
         <article className="publication">
@@ -73,14 +81,114 @@ function PublicationCard({ publication }) {
                     <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
                 </svg>
 
-                <button onClick={handleSave}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bookmark" viewBox="0 0 16 16">
-                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
-                    </svg>
+                <button onClick={handleToggleSave}>
+                    {isSaved ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2z" />
+                        </svg>
+                    ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bookmark" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
+                        </svg>
+                    )}
                 </button>
+
             </section>
         </article>
     )
 }
+
+// function PublicationCard({ publication }) {
+//     const [user, setUser] = useState([]);
+//     const { userData } = useContext(AuthContext);
+//     const navigate = useNavigate();
+//     const [isSaved, setIsSaved] = useState(false);
+
+//     useEffect(() => {
+//         handleLoadUser();
+//     }, [])
+
+//     const handleLoadUser = async () => {
+//         try {
+//             const data = await getUserById(publication.user_id);
+//             setUser(data);
+//         } catch (error) {
+//             console.error('Error fetching publications:', error);
+//         }
+//     };
+
+//     const handleToggleSave = async () => {
+//         if (!userData) {
+//             alert('Debes estar logueado para guardar una publicación');
+//             navigate('/login');
+//             return;
+//         }
+
+//         try {
+//             if (isSaved) {
+//                 await unsavePublication(publication.publication_id);
+//                 setIsSaved(false);
+//                 alert("Publicación desguardada");
+//             } else {
+//                 await savePublication(publication.publication_id);
+//                 setIsSaved(true);
+//                 alert("Publicación guardada");
+//             }
+//         } catch (error) {
+//             console.error(error);
+//             alert("Error al cambiar el estado de guardado");
+//         }
+//     };
+
+
+//     return (
+//         <article className="publication">
+//             <section className="publication-user-data">
+//                 <NavLink to={`/users/${user.username}`}>
+//                     <div className="user-data">
+//                         <img src={getUserImage(user.image)} alt="Imagen de usuario" className="user-data__img" />
+//                         <p className="user-data__username">@{user.username}</p>
+//                     </div>
+//                 </NavLink>
+
+//                 <p className="publication-date">
+//                     {new Date(publication.created_at).toISOString().slice(0, 10).replaceAll("-", "/")}
+//                 </p>
+//             </section>
+//             <section className="publication-img">
+//                 <img src="https://placehold.co/300x150" className="logo" alt={"AUX"} />
+//             </section>
+//             <section className="publication-data">
+//                 <NavLink to={`/publications/${publication.publication_id}`}>
+//                     <h2>{publication.title}</h2>
+//                 </NavLink>
+//                 <p className="publication-text">{publication.text}</p>
+//                 <p className="publication-category">{publication.category}</p>
+//             </section>
+//             <section className="publication_buttons">
+//                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
+//                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+//                 </svg>
+
+//                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chat-left" viewBox="0 0 16 16">
+//                     <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+//                 </svg>
+
+//                 <button onClick={handleToggleSave}>
+//                     {isSaved ? (
+//                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bookmark-fill" viewBox="0 0 16 16">
+//                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2z" />
+//                         </svg>
+//                     ) : (
+//                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bookmark" viewBox="0 0 16 16">
+//                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
+//                         </svg>
+//                     )}
+//                 </button>
+
+//             </section>
+//         </article>
+//     )
+// }
 
 export default PublicationCard;
