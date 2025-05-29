@@ -19,24 +19,20 @@
 }
 
 .edit-profile-button {
-    width: 2.5em;
-    height: 2.5em;
-
     position: absolute;
-    top: 1em;
-    left: 1em;
-
+    top: 0;
+    left: .5em;
+    width: 3em;
+    height: 3em;
     background-color: var(--button-color);
     color: white;
-
     border: none;
-    border-radius: 40px;
-
-    font-size: 1rem;
+    border-radius: 100px;
+    cursor: pointer;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .my-user-profile__header__img {

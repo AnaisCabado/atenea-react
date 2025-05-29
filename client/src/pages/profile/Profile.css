@@ -43,6 +43,23 @@
     width: 100%;
 }
 
+.back-button {
+    position: absolute;
+    top: 0;
+    left: .5em;
+    width: 3em;
+    height: 3em;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .user-profile__img {
     width: 30%;
     position: absolute;

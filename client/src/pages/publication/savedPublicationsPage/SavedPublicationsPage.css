@@ -5,6 +5,26 @@
     gap: 1em;
     margin: 2em 10% 0;
 }
+.saved__header {
+    position: relative;
+    width: 100%;
+}
+.saved__header .back-button {
+    position: absolute;
+    top: -2em;
+    left: -2em;
+    width: 3em;
+    height: 3em;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .favorites-list {
     margin-top: 2em;

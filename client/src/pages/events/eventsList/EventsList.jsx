@@ -93,10 +93,6 @@ function EventsList({ publications }) {
         selectedDate={selectedDate}
       />
 
-      {selectedDate && (
-        <p>Mostrando eventos para: {selectedDate}</p>
-      )}
-
       <section className="events-list">
         {isLoading ? (
           <p>Cargando...</p>
