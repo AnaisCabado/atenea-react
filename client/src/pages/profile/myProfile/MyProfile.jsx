@@ -66,7 +66,7 @@ function MyProfile() {
 
             <section className="my-user-profile__buttons">
                 <NavLink to='/publications/saved'>
-                    <button className="saved-dates-button">Saved publications</button>
+                    <button className="saved-publications-button">Saved publications</button>
                 </NavLink>
                 <button className="logout-button" onClick={onLogout}>Logout</button>
             </section>

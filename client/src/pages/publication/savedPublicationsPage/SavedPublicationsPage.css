@@ -1,0 +1,24 @@
+.saved-publications {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1em;
+    margin: 2em 10% 0;
+}
+
+.favorites-list {
+    margin-top: 2em;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1em;
+}
+
+@media (min-width: 768px) {
+    .favorites-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1em;
+    }
+    
+}

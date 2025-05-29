@@ -1,5 +1,6 @@
 import SavedPublication from "../../models/savedPublicationModel.js";
 import publicationModel from "../../models/publicationModel.js";
+import eventModel from "../../models/eventModel.js";
 import User from "../../models/userModel.js";
 
 async function controllerGetByID(id) {

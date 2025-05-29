@@ -18,7 +18,7 @@
     position: relative;
 }
 
-.back-button {
+.edit-profile-button {
     width: 2.5em;
     height: 2.5em;
 
@@ -26,8 +26,8 @@
     top: 1em;
     left: 1em;
 
-    background-color: #FF9519;
-    color: black;
+    background-color: var(--button-color);
+    color: white;
 
     border: none;
     border-radius: 40px;
@@ -37,8 +37,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    cursor: pointer;
 }
 
 .user-profile__header__img {
@@ -51,7 +49,7 @@
     bottom: -2em;
     right: 36%;
 
-    border: 2px solid #FF9519;
+    border: 1px solid var(--button-color);
     border-radius: 100px;
 }
 
@@ -59,22 +57,26 @@
 
 
 .user-profile__data {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-flow: column;
 
     margin-top: 1em;
+    padding: 0 5%;
+
 }
 
 .data--info {
     display: flex;
     flex-flow: column;
 }
+
 .data--name-lastname {
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
 }
+
 .data--username {
     font-size: .8rem;
     margin: 0;
@@ -97,34 +99,52 @@
     flex-flow: row;
     gap: 1em;
 }
-.data--following, .data--followers {
+
+.data--following,
+.data--followers {
     font-size: .8rem;
 }
 
 
 
 .user-profile__buttons {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: center;
     gap: 1em;
-    padding: 0 2em;
+    padding: 0 5%;
 }
-.follow-button, .chat-button {
+
+.user-profile__buttons button {
     width: 100%;
-    border: none;
-    border-radius: 20px;
+    max-width: 250px;
+}
+
+.saved-publications-button,
+.logout-button {
+    width: 100%;
+
+    background-color: var(--button-color);
+    color: white;
     padding: .5em 1em;
+    border: none;
+    border-radius: 10px;
+
     font-size: 1rem;
 
-    background-color: #FF9519;
-    color: black;
+    cursor: pointer;
 }
 
 .user-profile__publications {
     text-align: center;
+    margin: 0 5%;
+    margin-top: 2em;
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
 }
+
 
 
 
@@ -133,10 +153,12 @@
     .user-profile__header {
         max-height: 400px;
     }
+
     .user-profile__header__img {
         width: 100%;
         height: 100%;
     }
+
     .user-profile__img {
         width: 15%;
         position: absolute;

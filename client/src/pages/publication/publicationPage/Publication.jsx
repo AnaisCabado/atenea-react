@@ -74,6 +74,7 @@ function Publication() {
                 <p className="data--title">{publication.title}</p>
                 <p className="data--text">{publication.text}</p>
                 <p className="data--location">{publication.location || 'No location'}</p>
+                
                 {publication.category === "event" && publication.date_time && (
                     <>
                         <p className="data--event-date">

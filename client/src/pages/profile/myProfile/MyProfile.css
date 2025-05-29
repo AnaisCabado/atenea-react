@@ -26,8 +26,8 @@
     top: 1em;
     left: 1em;
 
-    background-color: #FF9519;
-    color: black;
+    background-color: var(--button-color);
+    color: white;
 
     border: none;
     border-radius: 40px;
@@ -49,7 +49,7 @@
     bottom: -2em;
     right: 36%;
 
-    border: 1px solid #FF9519;
+    border: 1px solid var(--button-color);
     border-radius: 100px;
 }
 
@@ -57,22 +57,26 @@
 
 
 .my-user-profile__data {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-flow: column;
 
     margin-top: 1em;
+    padding: 0 5%;
+
 }
 
 .data--info {
     display: flex;
     flex-flow: column;
 }
+
 .data--name-lastname {
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
 }
+
 .data--username {
     font-size: .8rem;
     margin: 0;
@@ -95,26 +99,34 @@
     flex-flow: row;
     gap: 1em;
 }
-.data--following, .data--followers {
+
+.data--following,
+.data--followers {
     font-size: .8rem;
 }
 
 
 
 .my-user-profile__buttons {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-flow: row;
     justify-content: center;
     gap: 1em;
-    padding: 0 2em;
+    padding: 0 5%;
 }
-.saved-dates-button, .logout-button {
+
+.my-user-profile__buttons a {
     width: 100%;
     max-width: 250px;
+}
 
-    background-color: #FF9519;
-    color: black;
+.saved-publications-button,
+.logout-button {
+    width: 100%;
+
+    background-color: var(--button-color);
+    color: white;
     padding: .5em 1em;
     border: none;
     border-radius: 10px;
@@ -126,6 +138,11 @@
 
 .my-user-profile__publications {
     text-align: center;
+    margin: 0 5%;
+    margin-top: 2em;
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
 }
 
 
@@ -136,10 +153,12 @@
     .my-user-profile__header {
         max-height: 400px;
     }
+
     .my-user-profile__header__img {
         width: 100%;
         height: 100%;
     }
+
     .my-user-profile__img {
         width: 15%;
         position: absolute;

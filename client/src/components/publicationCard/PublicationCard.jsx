@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 
-import { getAllPublications, getAllEvents, savePublication, unsavePublication } from '../../utils/api/publication';
+import { getAllPublications, getAllEvents, savePublication, unsavePublication, deletePublication } from '../../utils/api/publication';
 import { getUserById, getUserImage } from '../../utils/api/auth';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -38,16 +38,27 @@ function PublicationCard({ publication, isSaved: initialIsSaved = false }) {
                 await savePublication(publication.publication_id, userData.user_id);
                 setIsSaved(true);
                 alert("Publicación guardada");
-                
+
             } else {
                 await unsavePublication(publication.publication_id, userData.user_id);
                 setIsSaved(null);
                 alert("Publicación desguardada");
-                
+
             }
         } catch (error) {
             console.error(error);
             alert("Error al cambiar el estado de guardado");
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            await deletePublication(publication.publication_id);
+            alert("Publicación eliminada");
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+            alert("Error al eliminar la publicación");
         }
     };
 
@@ -84,6 +95,8 @@ function PublicationCard({ publication, isSaved: initialIsSaved = false }) {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chat-left" viewBox="0 0 16 16">
                     <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
                 </svg>
+
+                {(userData && userData.user_id === publication.user_id) && <button onClick={handleDelete} className="delete-publication">DELETE</button>}
 
                 <button onClick={handleToggleSave}>
                     {isSaved ? (

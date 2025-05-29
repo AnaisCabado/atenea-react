@@ -2,7 +2,8 @@
     display: flex;
     flex-flow: column;
 
-    border: 1px solid #FF9519;
+    background-color: var(--items-color);
+    border: 1px solid var(--button-color);
     border-radius: 20px;
     padding: 1em;
     gap: 1em;
@@ -39,13 +40,14 @@
 .publication-data {
     display: flex;
     flex-flow: column;
+    gap: 1em;
 }
 .publication-date {
     font-size: .8rem;
 }
 .publication-category {
-    background-color: #FF9519;
-    color: black;
+    background-color: var(--button-color);
+    color: white;
     border-radius: 10px;
     width: fit-content;
     padding: .5em 1em;
@@ -54,7 +56,6 @@
     width: 100%;
     border-radius: 20px;
 }
-
 
 .publication_buttons {
     display: flex;

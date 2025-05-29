@@ -28,6 +28,7 @@
 .publication__data {
     display: flex;
     flex-flow: column;
+    gap: 1em;
 
     margin-top: 1em;
     padding: 0 2em;
@@ -46,12 +47,13 @@
 .data-user-info {
     display: flex;
     flex-flow: row;
-    gap: .5em;
+    gap: 1em;
 }
 .user-img {
-    width: 3em;
+    width: 4em;
+    height: 4em;
 
-    border: 1px solid #FF9519;
+    border: 1px solid var(--button-color);
     border-radius: 100px;
 
     object-fit: cover;
@@ -86,6 +88,6 @@
 .join-button {
     width: 100%;
     max-width: 250px;
-    background-color: #FF9519;
-    color: black;
+    background-color: var(--button-color);
+    color: white;
 }

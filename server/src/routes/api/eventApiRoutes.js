@@ -7,6 +7,6 @@ const router = Router();
 
 // rutas protegidas
 router.get('/', eventApiController.getAll);
-router.post('/:date', eventApiController.getByDate);
+router.get('/:date', eventApiController.getByDate);
 
 export default router;

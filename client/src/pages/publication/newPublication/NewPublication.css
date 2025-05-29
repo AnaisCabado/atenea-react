@@ -19,7 +19,7 @@
     gap: .5em;
 
     padding: 1em;
-    border: 1px solid #FF9519;
+    border: 1px solid var(--button-color);
     border-radius: 20px;
 
     text-align: left;
@@ -47,8 +47,8 @@
 
 .create-publication__form form button {
     padding: .5em 1em;
-    background-color: #FF9519;
-    color: black;
+    background-color: var(--button-color);
+    color: white;
     border: none;
     border-radius: 10px;
     font-size: 1rem;

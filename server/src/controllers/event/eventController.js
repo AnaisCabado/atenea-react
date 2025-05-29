@@ -22,8 +22,6 @@ async function controllerGetAllEvents() {
 
 async function controllerGetByDate(date) {
   try {
-    console.log("Fecha recibida:", date);
-
     const events = await eventModel.findAll({
       where: {
         date_time: {

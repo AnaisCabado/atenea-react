@@ -1,8 +1,8 @@
 .search-bar {
     padding: 1em;
-    border: 1px solid #FF9519;
+    border: 1px solid var(--button-color);
     border-radius: 20px;
-    width: 80%;
+    width: 100%;
     max-width: 800px;
 }
 .search-svg-text {
@@ -10,7 +10,7 @@
     flex-flow: row;
     align-items: center;
 
-    background-color: #2e2e2e;
+    background-color: var(--items-color);
     border-radius: 40px;
 
     padding: .5em 1em;
@@ -18,11 +18,12 @@
 }
 .search-bar input {
     width: 100%;
-    background-color: #2e2e2e;
+    background-color: transparent;
     border: none;
     border-radius: 20px;
 
     height: 2em;
+    color: white;
 }
 
 input::placeholder {
@@ -30,4 +31,8 @@ input::placeholder {
     font-size: .8rem;
     width: 100%;
     font-size: 1rem;
+}
+
+.controls {
+    margin-bottom: 1em;
 }
