@@ -6,6 +6,8 @@ import './Register.css';
 
 function Register({ onClose }) {
     const { onRegister } = useContext(AuthContext);
+	const [name, setName] = useState("");
+	const [lastName, setLastName] = useState("");
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -19,7 +21,7 @@ function Register({ onClose }) {
 			return;
 		}
 
-		const result = await onRegister(username, email, password);
+		const result = await onRegister(name, lastName, username, email, password);
 		if (result?.error) {
 			setError(result.error);
 		} else {
@@ -33,8 +35,14 @@ function Register({ onClose }) {
 				<button className="close-button" onClick={onClose}>x</button>
 				<h2>Registrarse</h2>
 				<form onSubmit={handleSubmit}>
+					<label>Nombre:
+						<input type="text" autoFocus required value={name} onChange={(e) => setName(e.target.value)} />
+					</label>
+					<label>Apellido:
+						<input type="text" required value={lastName} onChange={(e) => setLastName(e.target.value)} />
+					</label>
 					<label>Nombre de usuario:
-						<input type="text" autoFocus required value={username} onChange={(e) => setUsername(e.target.value)} />
+						<input type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
 					</label>
 					<label>Email:
 						<input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />

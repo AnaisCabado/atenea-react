@@ -19,9 +19,9 @@ async function register(req, res) {
   } catch (error) {
     console.error(error);
     if (error.statusCode) {
-      res.redirect(`/register?error=` + error.message);
+      res.redirect(`/users/register?error=` + error.message);
     } else {
-      res.redirect(`/register?error=Internal+server+error`);
+      res.redirect(`/users/register?error=Internal+server+error`);
     }
   }
 }

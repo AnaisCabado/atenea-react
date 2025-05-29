@@ -23,7 +23,7 @@ function CalendarView({ events, onDateChange, selectedDate }) {
         <div className="selected-date-info">
           <p>Fecha seleccionada: {selectedDate}</p>
           <button
-            onClick={() => onDateChange(null)}
+            onClick={() => onDateChange()}
             className="clear-date-btn"
           >
             Limpiar selección

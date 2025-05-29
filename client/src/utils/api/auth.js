@@ -21,9 +21,28 @@ function getUserImage(image) {
     return 'http://localhost:3000/images/' + 'placeholder.png'/* image */;
 }
 
+async function register(name, lastName, username, email, password) {
+	try {
+		const result = await fetchData("/users/register", "POST", {
+            name, 
+            lastName,
+			username,
+			email,
+			password
+		});
+		if (result.token) {
+			saveToken(result.token);
+		}
+		return result;
+	} catch (error) {
+		return { error: error.message };
+	}
+}
+
 export {
     login,
     logout,
     getUserById,
-    getUserImage
+    getUserImage,
+    register
 }

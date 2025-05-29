@@ -47,7 +47,6 @@ function EventsList({ publications }) {
     }
 
     setSelectedDate(date);
-    console.log(date)
 
     const filtered = await getEventByDate(date);
     console.log('filtered',filtered)

@@ -1,6 +1,9 @@
 import userController from "./userController.js";
+import userModel from "../../models/userModel.js";
 import { hash } from "../../utils/bcrypt.js";
 import { createToken } from "../../utils/token.js";
+import { UserEmailNotProvided, UserPasswordNotProvided, UserNameNotProvided } from "../../utils/errors.js";
+import { compare } from "../../utils/bcrypt.js";
 
 async function login(req, res) {
   try {
@@ -40,12 +43,12 @@ async function getByUsername(req, res) {
     if (!username) {
       return res.status(400).json({ error: "Usuario no encontrado" });
     }
- 
+
     const user = await userController.controllerGetByUsername(username);
     res.json(user);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server error" });    
+    res.status(500).json({ error: "Server error" });
   }
 }
 
@@ -67,7 +70,7 @@ async function create(req, res) {
     data.image = req.file?.filename;
     const response = await userController.controllerCreate(data);
     console.log(response)
-    
+
     res.json(response);
   } catch (error) {
     console.error(error);
@@ -109,6 +112,55 @@ async function remove(req, res) {
   }
 }
 
+const register = async (req, res, next) => {
+  try {
+    const { email, password, username } = req.body;
+    console.log("req.body", req.body);
+    if (!email) throw new UserEmailNotProvided();
+    if (!password) throw new UserPasswordNotProvided();
+    if (!username) throw new UserNameNotProvided();
+
+    const existingEmail = await userModel.findOne({ email });
+
+    const existingUsername = await userModel.findOne({ username });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new userModel({
+      email,
+      password: hashedPassword,
+      username
+    });
+
+    await newUser.save();
+
+    const token = jwt.sign(
+      {
+        _id: newUser._id,
+        role: newUser.role,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
+
+    const userToReturn = newUser.toObject();
+    delete userToReturn.password;
+
+    res.status(201).json({
+      message: "Usuario creado correctamente",
+      token,
+      user: {
+        id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+        role: newUser.role
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export default {
   login,
   getAll,
@@ -117,4 +169,5 @@ export default {
   create,
   edit,
   remove,
+  register
 };

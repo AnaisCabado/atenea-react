@@ -1,36 +1,3 @@
-/**
- * Restaurant
- */
-class RestaurantNotFound extends Error {
-  constructor(message = "Restaurante no encontrado") {
-    super(message);
-    this.name = "RestaurantNotFound";
-    this.statusCode = 404;
-  }
-}
-
-class InvalidRestaurantId extends Error {
-  constructor() {
-    super("ID de restaurante no válido");
-    this.name = "InvalidRestaurantId";
-    this.statusCode = 400;
-  }
-}
-class InvalidRestaurantData extends Error {
-  constructor(message = "Datos inválidos para crear un restaurante") {
-    super(message);
-    this.name = "InvalidRestaurantData";
-    this.statusCode = 400;
-  }
-}
-
-class RestaurantAlreadyExists extends Error {
-  constructor() {
-    super("Ya existe un restaurante con ese nombre en esa ubicación");
-    this.name = "RestaurantAlreadyExists";
-    this.statusCode = 409;
-  }
-}
 class ValidationError extends Error {
   constructor(message) {
     super(message);
@@ -40,117 +7,6 @@ class ValidationError extends Error {
     if (!message) {
       this.message = "Error de validación";
     }
-  }
-}
-/**
- * Review
- */
-class NoReviewsFound extends Error {
-  constructor() {
-    super("No reviews for this user");
-    this.name = "NoReviewsFound";
-    this.statusCode = 404;
-  }
-}
-class NoRestaurantReviewsFound extends Error {
-  constructor() {
-    super("No reviews for this restaurant");
-    this.name = "NoReviewsRestaurant";
-    this.statusCode = 404;
-  }
-}
-class MissingReviewFields extends Error {
-  constructor() {
-    super("The text or rating is missing");
-    this.name = "MissingReviewFields";
-    this.statusCode = 404;
-  }
-}
-class ReviewAlreadyExists extends Error {
-  constructor() {
-    super("Review already exist");
-    this.name = "ReviewAlreadyExists";
-    this.statusCode = 404;
-  }
-}
-class ReviewNotFound extends Error {
-  constructor() {
-    super("Review not Found");
-    this.name = "ReviewNotFound";
-    this.statusCode = 404;
-  }
-}
-class NotAuthorizedToUpdateReview extends Error {
-  constructor() {
-    super("No authorized to update this review");
-    this.name = "NoAuthorizedToUpdateReview";
-    this.statusCode = 404;
-  }
-}
-class NoImageProvided extends Error {
-  constructor() {
-    super("No image provided");
-    this.name = "NoImageProvided";
-    this.statusCode = 404;
-  }
-}
-class NotAuthorizedToDeleteReview extends Error {
-  constructor() {
-    super("No authorized to delete this review");
-    this.name = "NoAuthorizedToDeleteReview";
-    this.statusCode = 404;
-  }
-}
-class ReviewImageNotValid extends Error {
-  constructor() {
-    super("No image to delete");
-    this.name = "ReviewImageNotValid";
-    this.statusCode = 404;
-  }
-}
-class ErrorDeleteImage extends Error {
-  constructor() {
-    super("Error to delete");
-    this.name = "ErrorDeleteImage";
-    this.statusCode = 404;
-  }
-}
-/**
- * Favorite
- */
-class NoFavoritesFound extends Error {
-  constructor() {
-    super("No favorites yet");
-    this.name = "NoFavoritesFound";
-    this.statusCode = 404;
-  }
-}
-class RestaurantIdNotProvided extends Error {
-  constructor() {
-    super("ID restaurant is not provided");
-    this.name = "RestaurantIdNotProvided";
-    this.statusCode = 400;
-  }
-}
-
-class FavoriteAlreadyExists extends Error {
-  constructor() {
-    super("The restaurant is already in favorites");
-    this.name = "FavoriteAlreadyExists";
-    this.statusCode = 400;
-  }
-}
-class FavoriteNotFound extends Error {
-  constructor() {
-    super("Favorite not found");
-    this.statusCode = 404;
-  }
-}
-
-class NotAuthorizedToDeleteFavorite extends Error {
-  constructor() {
-    super("Not authorized to delete another user's favorites");
-    this.statusCode = 403;
   }
 }
 
@@ -189,20 +45,6 @@ class UserEmailNotProvided extends Error {
 class UserPasswordNotProvided extends Error {
     constructor(){
         super("Contraseña no introducida");
-        this.statusCode = 400;
-    }
-}
-
-class UserRoleNotProvided extends Error {
-    constructor(){
-        super("User role not provided");
-        this.statusCode = 400;
-    }
-}
-
-class UserRoleIncorrect extends Error {
-    constructor(){
-        super("User role is not correct, it must be 'client' or 'admin'");
         this.statusCode = 400;
     }
 }
@@ -247,13 +89,6 @@ class UserNotFound extends Error {
   }
 }
 
-//Paginate
-class InvalidPaginationParams extends Error {
-  constructor() {
-    super("Invalid pagination parameters. Page and limit must be positive numbers.");
-    this.statusCode = 400;
-  }
-}
 //authMiddleware
 class UnauthorizedError extends Error {
   constructor(message = "No estás autorizado") {
@@ -280,40 +115,18 @@ class InvalidTokenError extends Error {
 }
 
 export {
-    RestaurantNotFound ,
-    InvalidRestaurantId,
-    InvalidRestaurantData,
-    RestaurantAlreadyExists,
-    NoFavoritesFound,
-    RestaurantIdNotProvided,
     ValidationError,
-    NoReviewsFound,
-    NoRestaurantReviewsFound,
-    MissingReviewFields,
-    ReviewAlreadyExists,
-    ReviewNotFound,
-    NotAuthorizedToUpdateReview,
-    NotAuthorizedToDeleteReview,
-    ReviewImageNotValid,
-    ErrorDeleteImage,
-    NoImageProvided,
-    FavoriteAlreadyExists,
-    FavoriteNotFound,
-    NotAuthorizedToDeleteFavorite,
     EmailNotFound,
     IncorrectPassword,
     UserNameNotProvided,
     UserEmailNotProvided,
     UserPasswordNotProvided,
-    UserRoleNotProvided,
-    UserRoleIncorrect,
     UserEmailAlreadyExists,
     UsernameAlreadyExists,
     UserInvalidCredentials,
     NoUsersFound,
     InvalidUserId,
     UserNotFound,
-    InvalidPaginationParams,
     UnauthorizedError,
     TokenExpiredError,
     InvalidTokenError

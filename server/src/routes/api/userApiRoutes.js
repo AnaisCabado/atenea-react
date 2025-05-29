@@ -7,13 +7,14 @@ import { upload } from "../../middleware/multer.js";
 const router = Router();
 
 router.post("/login",userApiController.login);
+router.post("/register",userApiController.register);
 
 router.get('/', userApiController.getAll);
-router.post('/create', upload.single("image"), userApiController.create);
+// router.post('/create', upload.single("image"), userApiController.create);
 
 router.get('/username/:username', userApiController.getByUsername);
 router.get('/:id', userApiController.getByID);
-router.put('/:id/edit', upload.single("image"), userApiController.edit);
+// router.put('/:id/edit', upload.single("image"), userApiController.edit);
 router.delete("/:id/delete", userApiController.remove);
 
 
