@@ -24,10 +24,7 @@ async function controllerGetByDate(date) {
   try {
     const events = await eventModel.findAll({
       where: {
-        date_time: {
-          [Op.gte]: start,
-          [Op.lte]: end,
-        },
+        date_time: date,
       },
       order: [["date_time", "ASC"]],
     });

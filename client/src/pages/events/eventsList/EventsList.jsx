@@ -39,18 +39,18 @@ function EventsList({ publications }) {
     }
   };
 
-  const handleDateChange = (date) => {
+  const handleDateChange = async (date) => {
+    if (!date) {
+      setSelectedDate(null);
+      setFilteredEvents(events);
+      return;
+    }
+
     setSelectedDate(date);
     console.log(date)
 
-    // const selectedDateStr = date.toISOString().split('T')[0]; // formato YYYY-MM-DD
-
-    // const filtered = events.filter(event => {
-    //   const eventDateStr = new Date(event.date_time).toISOString().split('T')[0];
-    //   return eventDateStr === selectedDateStr;
-    // });
-
-    const filtered = getEventByDate(date);
+    const filtered = await getEventByDate(date);
+    console.log('filtered',filtered)
 
     const publicationIds = filtered.map(event => event.publication_id);
 
@@ -67,25 +67,26 @@ function EventsList({ publications }) {
 
     // Actualizar URL params
     setSearchParams(params => {
-      if (term) {
-        params.set("search", term);
-      } else {
-        params.delete("search");
-      }
+      params.set("search", term);
       return params;
     });
+
+    const filtered = publications.filter(publication =>
+      publication.title.toLowerCase().includes(term.toLowerCase())
+    );
+    setFilteredEvents(filtered);
   };
 
   return (
     <article className="events-list-page">
-        <section className="search-bar">
-            <div className="search-svg-text">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
-                <input onChange={handleSearchChange} type="text" placeholder="Search for events" />
-            </div>
-        </section>
+      <section className="search-bar">
+        <div className="search-svg-text">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+          </svg>
+          <input onChange={handleSearchChange} type="text" placeholder="Search for events" />
+        </div>
+      </section>
 
       <CalendarView
         events={publications}

@@ -12,31 +12,11 @@ async function getAllEvents() {
 }
 
 async function getEventByDate(date) {
-  try {
-    const response = await fetch(`/api/events/${date}`);
-    console.log(response)
-    
-    const contentType = response.headers.get("content-type");
-
-    if (!response.ok) {
-      const errorText = await response.text();  // puede venir como HTML
-      throw new Error(`Error HTTP ${response.status}: ${errorText}`);
-    }
-
-    if (!contentType || !contentType.includes("application/json")) {
-      const rawText = await response.text();
-      throw new Error(`Respuesta no JSON: ${rawText}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error en getEventByDate:", error.message);
-    throw error;
-  }
+  console.log('date',date)
+  const data = await fetchData(`/events/${date}`);
+  console.log('data',data)
+  return data;
 }
-
-
 
 async function deletePublication(id){
     const response = await fetchData(`/publications/${id}/delete`, 'DELETE');

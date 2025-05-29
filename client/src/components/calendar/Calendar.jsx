@@ -8,12 +8,8 @@ function CalendarView({ events, onDateChange, selectedDate }) {
   const handleDateChange = (selectedDate) => {
     setDate(selectedDate);
 
-    // Formatear fecha como YYYY-MM-DD para consistencia
     const selectedDateStr = selectedDate.toLocaleDateString('en-CA');
-
-    if (onDateChange && typeof onDateChange === 'function') {
-      onDateChange(selectedDateStr);
-    }
+    onDateChange(selectedDateStr);
   };
 
   return (
@@ -21,14 +17,6 @@ function CalendarView({ events, onDateChange, selectedDate }) {
       <Calendar
         onChange={handleDateChange}
         value={date}
-        // tileClassName={({ date }) => {
-        //   // Agregar clase CSS para fechas con eventos
-        //   return hasEvents(date) ? 'has-events' : '';
-        // }}
-        // tileContent={({ date }) => {
-        //   // Opcional: agregar indicador visual para fechas con eventos
-        //   return hasEvents(date) ? <div className="event-indicator">•</div> : null;
-        // }}
       />
 
       {selectedDate && (
