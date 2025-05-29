@@ -12,7 +12,6 @@ function SearchFilter({onSearch}) {
         clearTimeout(timeoutRef.current);
 
         timeoutRef.current = setTimeout(()=>{
-            console.log('search',data);
             onSearch(data);
         },500);
         setSearchTerm(data);

@@ -24,14 +24,6 @@ async function controllerGetByDate(date) {
   try {
     console.log("Fecha recibida:", date);
 
-    // Asume zona horaria de la app (por ejemplo 'America/Argentina/Buenos_Aires')
-    const tz = 'Europe/Madrid';
-
-    const start = dayjs.tz(date, tz).startOf('day').toDate();
-    const end = dayjs.tz(date, tz).endOf('day').toDate();
-
-    console.log("Buscando entre:", start.toISOString(), "y", end.toISOString());
-
     const events = await eventModel.findAll({
       where: {
         date_time: {

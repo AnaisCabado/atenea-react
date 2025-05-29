@@ -24,12 +24,10 @@ const AuthProvider = ({ children }) => {
         if (result.error) {
             return result.error;
         } else {
-            console.log('first', result);
             setUserData(result);
 
             sessionStorage.setItem('user', JSON.stringify(result));
 
-            console.log('last', userData);
             navigate('/');
             return null;
         }

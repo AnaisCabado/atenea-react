@@ -1,4 +1,5 @@
 import publicationController from "./publicationController.js";
+import SavedPublication from "../../models/savedPublicationModel.js";
 
 
 async function getByID(req, res) {

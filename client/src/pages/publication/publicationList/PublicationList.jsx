@@ -7,20 +7,21 @@ import SearchFilter from "../../../components/searchFilter/SearchFilter";
 import './PublicationList.css';
 
 function PublicationList() {
-    const [publication, setPublication] = useState([]);
+    const [publications, setPublications] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
 
     useEffect(() => {
         handleLoadPublications();
-    }, [])
+    }, []);
 
     const handleLoadPublications = async () => {
         try {
             const data = await getAllPublications();
-            setPublication(data);
+            setPublications(Array.isArray(data) ? data : []);
         } catch (error) {
             console.error('Error fetching publications:', error);            
+            setPublications([]);
         }
     };
 
@@ -29,23 +30,24 @@ function PublicationList() {
         setSearchParams(params => {
             params.set("search", newTerm);
             return params;
-        })
+        });
     };
 
-    const filteredPublications = publication.filter(pub => 
+    const filteredPublications = publications.filter(pub =>
         pub.title.toLowerCase().includes(searchTerm.toLowerCase())
-    ); /* TODO SEARCH BACK */
+    );
 
     return (
         <section className="search-publications">
             <SearchFilter onSearch={handleSearchTerm} />
             <div className="publication-list">
-            {filteredPublications.map(publication => {
-                return <PublicationCard publication={publication} key={publication.publication_id} />
-            })}
+                {filteredPublications.map(publication => (
+                    <PublicationCard publication={publication} key={publication.publication_id} />
+                ))}
             </div>
         </section>
-    )
+    );
 }
+
 
 export default PublicationList;

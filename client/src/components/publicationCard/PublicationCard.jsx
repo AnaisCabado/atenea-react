@@ -34,14 +34,16 @@ function PublicationCard({ publication, isSaved: initialIsSaved = false }) {
         }
 
         try {
-            if (isSaved) {
-                await unsavePublication(publication.publication_id, userData.user_id);
-                setIsSaved(false);
-                alert("Publicación desguardada");
-            } else {
+            if (!isSaved) {
                 await savePublication(publication.publication_id, userData.user_id);
                 setIsSaved(true);
                 alert("Publicación guardada");
+                
+            } else {
+                await unsavePublication(publication.publication_id, userData.user_id);
+                setIsSaved(null);
+                alert("Publicación desguardada");
+                
             }
         } catch (error) {
             console.error(error);

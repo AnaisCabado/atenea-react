@@ -112,6 +112,15 @@ function newPublication() {
                         <option value="event">Event</option>
                         <option value="post">Post</option>
                     </select>
+
+                    {/* <label htmlFor="location">Location</label>
+                    <input type="text"
+                        name="location"
+                        id="location"
+                        value={publicationData.location}
+                        onChange={handleChange}
+                        placeholder="Location" /> */}
+
                     <label htmlFor="date">Date</label>
                     <input
                         type="date"
